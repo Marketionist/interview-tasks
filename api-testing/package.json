@@ -1,0 +1,29 @@
+{
+  "name": "api-testing",
+  "version": "0.0.1",
+  "description": "Set of API tests to validate discounts",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js --format node_modules/cucumber-pretty features/**/*.feature"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "interview",
+    "interview tasks"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^5.1.0",
+    "cucumber-pretty": "1.5.0",
+    "node-testing-server": "^1.2.5",
+    "request": "^2.88.0"
+  }
+}
