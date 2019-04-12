@@ -13,7 +13,7 @@ Given(/^I have (\d+) items in my order (\d+)$/, function (numberItems, numberOrd
             let totalItems = 0;
             let responseBody = JSON.parse(body);
 
-            responseBody.items.forEach((value, index) => {
+            responseBody.items.map((value, index) => {
                 totalItems += responseBody.items[index].quantity;
             });
 
