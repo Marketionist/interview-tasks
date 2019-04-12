@@ -2,10 +2,15 @@ const { Given, When, Then } = require('cucumber');
 const { expect } = require('chai');
 const request = require('request');
 
+const ERROR_WRONG_DISCOUNT = 'The discount number is wrong';
+
+let hostPath = 'http://localhost:3001/api/1.0/order_summary/';
+let hostPathExtension = '.json';
+
 Given(/^I have (\d+) items in my order (\d+)$/, function (numberItems, numberOrder, done) {
     // Call native app to do something like: this.orderApi.CreateOrder();
     // Here we emulate it by requesting .json file
-    request(`http://localhost:3001/api/1.0/order_summary/${numberOrder}.json`, function (error, response, body) {
+    request(`${hostPath}${numberOrder}${hostPathExtension}`, function (error, response, body) {
         if (error) {
             done(error);
         } else {
@@ -17,7 +22,7 @@ Given(/^I have (\d+) items in my order (\d+)$/, function (numberItems, numberOrd
                 totalItems += responseBody.items[index].quantity;
             });
 
-            expect(totalItems).to.eql(numberItems);
+            expect(totalItems).to.equal(numberItems);
 
             done();
         }
@@ -27,7 +32,7 @@ Given(/^I have (\d+) items in my order (\d+)$/, function (numberItems, numberOrd
 When(/^I view the checkout summary for order (\d+)$/, function (numberOrder, done) {
     // Call native app to do something like: this.order = this.orderApi.GetOrder();
     // Here we emulate it by requesting .json file
-    request(`http://localhost:3001/api/1.0/order_summary/${numberOrder}.json`, function (error, response, body) {
+    request(`${hostPath}${numberOrder}${hostPathExtension}`, function (error, response, body) {
         if (error) {
             done(error);
         } else {
@@ -42,7 +47,7 @@ When(/^I view the checkout summary for order (\d+)$/, function (numberOrder, don
 });
 
 Then(/^there is a (\d+)% discount applied for order (\d+)$/, function (numberDiscount, numberOrder, done) {
-    request(`http://localhost:3001/api/1.0/order_summary/${numberOrder}.json`, function (error, response, body) {
+    request(`${hostPath}${numberOrder}${hostPathExtension}`, function (error, response, body) {
         // console.log('Response status code:', response && response.statusCode);
         // console.log('Response body:', body);
         if (error) {
@@ -50,7 +55,7 @@ Then(/^there is a (\d+)% discount applied for order (\d+)$/, function (numberDis
         } else {
             let responseBody = JSON.parse(body);
 
-            expect(responseBody.discount).to.eql(numberDiscount);
+            expect(responseBody.discount).to.equal(numberDiscount, ERROR_WRONG_DISCOUNT);
 
             done();
         }
