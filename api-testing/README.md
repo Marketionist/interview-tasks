@@ -86,9 +86,9 @@ Let's assume that for now we have enough time to cover all Boundary Value Analys
 1. The input conditions have issue: 2 ranges have the same value 20 in them (11-20 items: 5%, 20-30 items: 10%) - so it
     looks like the item count intersection. We will assume that it should be 11-20 items: 5%, 21-30 items: 10%.
 2. JSON was not valid:
-    - 1.a. Excessive comma in `"quantity": 6,`.
-    - 1.b. Missing comma before `"order_total": 45.4,`.
-    - 1.c. Wrong quotes format around `“order_total”: 45.4, “discount”: 0`.
+    - 2.a. Excessive comma in `"quantity": 6,`.
+    - 2.b. Missing comma before `"order_total": 45.4,`.
+    - 2.c. Wrong quotes format around `“order_total”: 45.4, “discount”: 0`.
 3. For `"I have (.*) items in my order"` and `"there is a (.*)% discount applied"` Regex was improved - from `(.*)` that
     parses any symbols to `(\d+)` that parses only digits.
 4. For all steps had to add `... for order (\d+)` to get corresponding .json files from server.
