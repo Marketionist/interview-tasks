@@ -23,7 +23,7 @@ Scenario: Orders with 11- 20 items receive a 5% discount
 ```
 
 Feature:
-Will will be offering discounts on larger quantities of orders according to the following schedule.  The discount will
+Will will be offering discounts on larger quantities of orders according to the following schedule. The discount will
 apply when viewing the order summary endpoint.
 
 The endpoint is `/api/1.0/order_summary/{order_id}` and an example response model is:
@@ -52,7 +52,15 @@ The endpoint is `/api/1.0/order_summary/{order_id}` and an example response mode
 }
 ```
 
-## Assumptions and notes
+- 0-10 items: 0% discount
+- 11-20 items: 5% discount
+- 21-30 items: 10% discount
+- 31+ items: 20% discount
+
+Please write test cases for the following feature and describe how you would automate testing. Please explain any
+assumptions you made while writing tests.
+
+## Assumptions
 We have 4 ranges to test:
 
 ```
@@ -84,10 +92,10 @@ Let's assume that for now we have enough time to cover all Boundary Value Analys
 3. For `"I have (.*) items in my order"` and `"there is a (.*)% discount applied"` Regex was improved - from `(.*)` that
     parses any symbols to `(\d+)` that parses only digits.
 4. For all steps had to add `... for order (\d+)` to get corresponding .json files from server.
-5. To emulate application API responses we will use (node-testing-server)[https://github.com/Marketionist/node-testing-server]
+5. To emulate application API responses we will use [node-testing-server](https://github.com/Marketionist/node-testing-server).
 6. Test case `Then there is a 20% discount applied for order 31` is failing (expecting discount 20 and getting 99 instead) - it is
     done intentionally for demonstration purposes and can be fixed in `hooks.js` by editing `"discount": 99`.
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
-on [github](https://github.com/Marketionist/interview-tasks)
+on [github](https://github.com/Marketionist/interview-tasks).
