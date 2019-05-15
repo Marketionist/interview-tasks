@@ -1,0 +1,44 @@
+# https://artillery.io/docs/http-reference/
+config:
+  target: "https://artillery.io"
+  plugins:
+    expect: {}
+  ensure:
+    # min, max, median, p95, and p99 may be set.
+    # A request latency p95 value of 20000ms means that 95 out of 100 requests
+    # took 20000ms or less to complete.
+    p95: 20000
+    # The error rate is defined as the ratio of virtual users that didn't
+    # complete their scenarios successfully to the total number of virtual users
+    # created during the test.
+    # Exit with a non-zero if the total error rate exceeded 20%.
+    maxErrorRate: 20
+  # 2 load phases, which will last 5 and 10 seconds with 5-20 and 20 new
+  # virtual users arriving every second.
+  phases:
+    - duration: 5
+      arrivalRate: 5
+      rampTo: 20
+      name: "Warm up the application: 5 to 20 users arriving per second"
+    - duration: 10
+      arrivalRate: 20
+      name: "Sustained max load: 20 users arriving per second"
+  processor: "./custom.functions.js"
+  defaults:
+    headers:
+      x-api-key: "{{ $processEnvironment.SERVICE_API_KEY }}"
+# https://artillery.io/docs/script-reference/
+# We define one possible scenario for every new virtual user to pick from,
+# which consists of one GET request.
+scenarios:
+  - flow:
+    # - log: "Current x-api-key is set to: {{ $processEnvironment.SERVICE_API_KEY }}"
+    - get:
+        url: "/docs"
+        # https://artillery.io/docs/plugin-expectations-assertions/
+        expect:
+          - statusCode: 200
+          - contentType: text/html
+        # Run the afterResponseHandler function from ./custom.functions.js after
+        # the response has been received
+        afterResponse: "afterResponseHandler"
