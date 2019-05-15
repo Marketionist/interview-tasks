@@ -1,0 +1,32 @@
+{
+  "name": "load-testing",
+  "version": "0.0.1",
+  "description": "A set of load tests",
+  "engines": {
+    "node": ">=8.6.x"
+  },
+  "scripts": {
+    "test-quick": "./node_modules/.bin/artillery quick --count 10 -n 20 https://artillery.io/",
+    "test": "SERVICE_API_KEY=\"012345-my-api-key\" ./node_modules/.bin/artillery run simple.test.yml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "interview",
+    "interview tasks",
+    "interview load tests",
+    "interview load testing tasks"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "artillery": "^1.6.0-28",
+    "artillery-plugin-expect": "^1.2.1"
+  }
+}
