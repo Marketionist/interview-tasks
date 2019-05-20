@@ -1,4 +1,4 @@
-// Task: write a function that takes an array of zeros and ones as input and returns the maximum number of consecutive
+// Task: write a function that takes an array of zeros and ones as an input and returns the maximum number of consecutive
 // zeros or ones
 
 let allDigits0 = [0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0];
