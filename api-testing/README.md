@@ -1,9 +1,9 @@
 # api-testing
 
-Set of API tests to validate discounts
+A set of API tests to validate discounts
 
 ## Supported versions
-Tested on [Node.js](http://nodejs.org/) 10.15.1
+Should work on any [Node.js](http://nodejs.org/) version >=8.6.x. Tested on Node.js 10.15.1.
 
 ## Installation
 1. Install [Node.js](http://nodejs.org/) 10.x.x (LTS)
