@@ -1,7 +1,10 @@
 {
   "name": "api-testing",
   "version": "0.0.1",
-  "description": "Set of API tests to validate discounts",
+  "description": "A set of API tests to validate discounts",
+  "engines": {
+    "node": ">=8.6.x"
+  },
   "scripts": {
     "test": "./node_modules/.bin/cucumber-js --format node_modules/cucumber-pretty features/**/*.feature"
   },
@@ -11,7 +14,9 @@
   },
   "keywords": [
     "interview",
-    "interview tasks"
+    "interview tasks",
+    "interview api tests",
+    "interview api testing tasks"
   ],
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
