@@ -4,6 +4,7 @@ Collection of interview tasks for test automation engineers and web developers w
 
 1. [Coding tasks](https://github.com/Marketionist/interview-tasks/tree/master/coding-tasks)
 2. [API testing](https://github.com/Marketionist/interview-tasks/tree/master/api-testing)
+3. [Load testing](https://github.com/Marketionist/interview-tasks/tree/master/load-testing)
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
