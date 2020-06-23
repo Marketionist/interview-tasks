@@ -1,0 +1,35 @@
+{
+  "name": "matching-score",
+  "version": "0.0.1",
+  "description": "A matching score program",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.6.x"
+  },
+  "scripts": {
+    "lint": "node_modules/.bin/eslint *.js helpers/**/*.js errors/**/*.js spec/**/*.js",
+    "test": "node_modules/.bin/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "matching score",
+    "backend matching score",
+    "interview matching score",
+    "interview backend matching score"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "csvtojson": "^2.0.10",
+    "eslint": "^7.3.1",
+    "jasmine": "^3.5.0",
+    "js-automation-tools": "^1.0.5"
+  }
+}

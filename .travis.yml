@@ -1,0 +1,20 @@
+# http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: required
+dist: bionic
+
+# http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+language: node_js
+node_js:
+  - "12"
+
+services:
+  - docker
+
+before_install:
+  - cd backend/matching-score/
+
+install:
+  - docker build --no-cache -t sample-app .
+
+script:
+  - docker images -a | sort | uniq
