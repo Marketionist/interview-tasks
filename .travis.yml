@@ -14,10 +14,10 @@ before_install:
  - cd backend/matching-score/
 
 install:
-  - docker build --no-cache -t test/tests .
+  - docker build --no-cache -t sample-app .
 
 before_script:
   - docker images -a | sort | uniq
 
 script:
-  - docker run -it --rm --name=dptest -p 8000:80 test/tests --suite all
+  - docker run -it --rm --name=matching-score -p 3000:3000 sample-app
