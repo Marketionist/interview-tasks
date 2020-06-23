@@ -22,4 +22,4 @@ EXPOSE 3000
 RUN npm run lint
 
 # Run unit tests
-CMD ["/bin/bash", "npm", "test"]
+RUN npm test
