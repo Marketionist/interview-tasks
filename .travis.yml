@@ -11,10 +11,10 @@ services:
   - docker
 
 before_install:
- - cd backend/matching-score/
+  - cd backend/matching-score/
 
 install:
-  - docker build --no-cache -t sample-app .
+  - docker build --no-cache -t sample-app:v1 .
 
 before_script:
   - docker images -a | sort | uniq
