@@ -9,6 +9,8 @@ Set of interview coding tasks written on JavaScript / Node.js:
 - [parse-discount.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/parse-discount.js): parse discount value from a string
 - [prime-numbers.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/prime-numbers.js): check if number is a prime number (is divided only on one and itself)
 - [ransom-note.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/ransom-note.js): check if all needed words are present in provided text
+- [print-object-properties.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/print-object-properties.js): sorts and outputs the incoming arguments as numeric
+and string object properties
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
