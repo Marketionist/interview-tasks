@@ -53,6 +53,11 @@ As we treat the system as a black box and for the sake of simplicity we will
 emulate the output of the system with the simple functions that will return
 selected messages when called with particular incoming text strings.
 
+An advanced black box test suite will include much more test cases to test
+different wording used by customers. You can observe some variants of wording
+inside `GREETINGS` and `CONFIRMATIONS` arrays in
+https://github.com/Marketionist/interview-tasks/blob/master/telecom/messages/messages.js
+
 ### Code
 You can see the main service module code in
 https://github.com/Marketionist/interview-tasks/tree/master/telecom/index.js.
