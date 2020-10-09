@@ -56,7 +56,7 @@ selected messages when called with particular incoming text strings.
 An advanced black box test suite will include much more test cases to test
 different wording used by customers. You can observe some variants of wording
 inside `GREETINGS` and `CONFIRMATIONS` arrays in
-https://github.com/Marketionist/interview-tasks/blob/master/telecom/messages/messages.js
+https://github.com/Marketionist/interview-tasks/blob/master/telecom/messages/messages.js.
 
 ### Code
 You can see the main service module code in
