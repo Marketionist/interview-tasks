@@ -10,7 +10,8 @@ const {
 
 describe('Test SMS message chain', () => {
 
-    it('If the input is empty - the output should be ' +
+    it(
+        'If the input is empty - the output should be ' +
         `"${CONFIRM_CLIENT_NUMBER}"`,
         () => {
             const confirmClientNumberMessage = confirmClientNumber();
