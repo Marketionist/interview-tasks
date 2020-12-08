@@ -66,7 +66,8 @@ test cases with priority 1 will be automated for now.
 > https://frontend.nopcommerce.com by setting the environment variable:
 > `URL_MAIN_PAGE='https://frontend.nopcommerce.com' npm run test`).
 
-Test automation will be done with `TestCafe` + `Cucumber` as it gives a good structure, is easy to maintain on a long run and is clear for both developers
+Test automation will be done with `TestCafe` + `Cucumber` as it gives a good
+structure, is easy to maintain on a long run and is clear for both developers
 and stackholders.
 
 One of my existing packages will be used for Cucumber step definitions:
@@ -303,7 +304,8 @@ values provided in the wireframe. *
 9. Top right Search item input placeholder is "Search store" (it should be
 "Search item"). *
 10. h1 title is "Search" (it should be "Search the store"). *
-11. Central Search item input has label "Search keyword" (it should have label "Search item" and "Enter your search item here" placeholder). *
+11. Central Search item input has label "Search keyword" (it should have label
+"Search item" and "Enter your search item here" placeholder). *
 12. Advanced Search checkbox is positioned under the central Search item input
 (it should be displayed on the right side of the central Search item input). *
 13. Automatically search sub-categories checkbox is positioned under the
@@ -326,7 +328,8 @@ stages of feature planning/design.
 2. It would be great to clarify the requirements with acceptance criteria
 and a list of environments (browsers/operating systems) that should be
 supported.
-3. As for the list layout icon functionality that should be displayed but not implemented - feature flags can potentially be a nice technique to introduce for
+3. As for the list layout icon functionality that should be displayed but not
+implemented - feature flags can potentially be a nice technique to introduce for
 such cases.
 
 ## Thanks
