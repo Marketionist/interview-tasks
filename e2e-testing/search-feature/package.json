@@ -6,7 +6,8 @@
     "node": ">=8.6.x"
   },
   "scripts": {
-    "test": "PO_FOLDER_PATH='tests/page-model' node ./node_modules/gherkin-testcafe/main.js --concurrency 1 'chrome' *.js tests/**/*.feature"
+    "test": "PO_FOLDER_PATH='tests/page-model' node ./node_modules/gherkin-testcafe/main.js --concurrency 1 'chrome'",
+    "test-ci": "PO_FOLDER_PATH='tests/page-model' node ./node_modules/gherkin-testcafe/main.js --concurrency 1 'chrome:headless'"
   },
   "repository": {
     "type": "git",
