@@ -94,6 +94,7 @@ level of confidence that the main aspects of the search feature are covered:
             <th>#</th>
             <th>Test case</th>
             <th>Automation priority</th>
+            <th>Automated in</th>
             <th>Test execution status</th>
             <th>Comments</th>
         </tr>
@@ -103,12 +104,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>1</td>
             <td>Search for "a" in the top right Search item input - search result should be displayed.</td>
             <td></td>
+            <td></td>
             <td>Failed</td>
             <td>"Search term minimum length is 3 characters" notification is displayed.</td>
         </tr>
         <tr>
             <td>2</td>
             <td>Search for "nok" in the top right Search item input - search result should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Passed</td>
             <td></td>
@@ -117,12 +120,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>3</td>
             <td>Search for "" in the top right Search item input - "Search term minimum length is 1 character" notification should be displayed.</td>
             <td></td>
+            <td></td>
             <td>Failed</td>
             <td>Empty input browser alert is displayed.</td>
         </tr>
         <tr>
             <td>4</td>
             <td>Search for "nosuchproductnow&ever123" in the top right Search item input - blue notification "No results for {search_criteria}." should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Failed</td>
             <td>Red notification "No products were found that matched your criteria.
@@ -132,6 +137,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>5</td>
             <td>Search for "a" in the central Search item input - search result should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L7</td>
             <td>Failed</td>
             <td>"Search term minimum length is 3 characters" notification is displayed.</td>
         </tr>
@@ -139,11 +145,13 @@ level of confidence that the main aspects of the search feature are covered:
             <td>6</td>
             <td>Search for "nok" in the central Search item input - search result should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L7</td>
             <td>Passed</td>
         </tr>
         <tr>
             <td>7</td>
             <td>Search for "" in the central Search item input - "Search term minimum length is 1 character" notification should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Failed</td>
             <td>"Search term minimum length is 3 characters" notification is displayed.</td>
@@ -152,6 +160,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>8</td>
             <td>Search for "nosuchproductnow&ever123" in the central Search item input - blue notification "No results for {search_criteria}." should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L18</td>
             <td>Failed</td>
             <td>Red notification "No products were found that matched your criteria.
 " is displayed.</td>
@@ -160,12 +169,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>10</td>
             <td>Search for "gift card" in the central Search item input - 3 products with prices 25, 50, 75 should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L24</td>
             <td>Passed</td>
             <td></td>
         </tr>
         <tr>
             <td>11</td>
             <td>Search for "gift card" in the central Search item input, set Category to Books - No results notification should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Passed</td>
             <td></td>
@@ -174,12 +185,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>12</td>
             <td>Search for "gift card" in the central Search item input, set Category to Gift Cards, set Price range from 50 to 75 - 1 product with price 50 should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L32</td>
             <td>Passed</td>
             <td></td>
         </tr>
         <tr>
             <td>13</td>
             <td>Search for "gift card" in the central Search item input - maximum of 3 products per row, product image on the left side, product name, ratings, price and buttons on the right side should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Failed</td>
             <td>Product name, ratings, price and buttons are displayed under the product.</td>
@@ -188,6 +201,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>14</td>
             <td>Search for "gift card" in the central Search item input and click on the list icon - list layout should not be applied.</td>
             <td></td>
+            <td></td>
             <td>Failed</td>
             <td>List layout is applied.</td>
         </tr>
@@ -195,12 +209,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>15</td>
             <td>Click on Advanced Search checkbox - Category, Manufacturer, Price range inputs should be displayed.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L44</td>
             <td>Passed</td>
             <td>Price range inputs are missing "From:" and "To:" labels.</td>
         </tr>
         <tr>
             <td>16</td>
             <td>Click on Category dropdown - list of values from the wireframe should be displayed, values should be sorted from A to Z.</td>
+            <td></td>
             <td></td>
             <td>Failed</td>
             <td>Dropdown values are not sorted from A to Z.</td>
@@ -209,12 +225,14 @@ level of confidence that the main aspects of the search feature are covered:
             <td>17</td>
             <td>Click on Manufacturer dropdown - list of values from the wireframe should be displayed.</td>
             <td></td>
+            <td></td>
             <td>Failed</td>
             <td>Dropdown values do not match the values provided in the wireframe.</td>
         </tr>
         <tr>
             <td>18</td>
             <td>Click on Sort by dropdown - list of values from the wireframe should be displayed.</td>
+            <td></td>
             <td></td>
             <td>Passed</td>
             <td></td>
@@ -223,6 +241,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>19</td>
             <td>Click on Show results per page dropdown - list of values from the wireframe should be displayed.</td>
             <td></td>
+            <td></td>
             <td>Failed</td>
             <td>Dropdown values do not match the values provided in the wireframe.</td>
         </tr>
@@ -230,6 +249,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>20</td>
             <td>Click on the product image - user should be redirected to the product page.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L52</td>
             <td>Passed</td>
             <td></td>
         </tr>
@@ -237,6 +257,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>21</td>
             <td>Click on the product name - user should be redirected to the product page.</td>
             <td>1</td>
+            <td>https://github.com/Marketionist/interview-tasks/blob/master/e2e-testing/search-feature/tests/search.feature#L59</td>
             <td>Passed</td>
             <td></td>
         </tr>
@@ -246,6 +267,7 @@ level of confidence that the main aspects of the search feature are covered:
             <td>2</td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>23</td>
@@ -253,11 +275,13 @@ level of confidence that the main aspects of the search feature are covered:
             <td>2</td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>24</td>
             <td>Verify the working of Search In product descriptions checkbox. *</td>
             <td>2</td>
+            <td></td>
             <td></td>
             <td></td>
         </tr>
