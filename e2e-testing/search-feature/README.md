@@ -6,6 +6,18 @@ A set of happy path e2e tests to verify the search feature
 Should work on any [Node.js](http://nodejs.org/) version >=8.6.x. Tested on
 Node.js 14.15.1.
 
+## Table of contents
+
+* [Installation](#installation)
+* [Initial task](#initial-task)
+* [Deliverables](#deliverables)
+  * [Test strategy](#test-strategy)
+  * [Test plan and test execution report](#test-plan-and-test-execution-report)
+  * [Notes to clarify wireframe](#notes-to-clarify-wireframe)
+  * [Bug drafts](#bug-drafts)
+  * [Feedback on how to improve the quality in the team](#feedback-on-how-to-improve-the-quality-in-the-team)
+* [Thanks](#thanks)
+
 ## Installation
 1. Install [Node.js](http://nodejs.org/) 14.x.x (LTS)
 2. Clone this repository: `git clone git@github.com:Marketionist/interview-tasks.git`
@@ -291,7 +303,7 @@ level of confidence that the main aspects of the search feature are covered:
 \* - TODO: search for (or ideally create) test data to verify the marked test
 cases.
 
-### Notes to clarify the wireframe
+### Notes to clarify wireframe
 1. Should top right Search item input and central Search item input work
 consistently? Searching with empty input behaves differently now. Default
 assumption - yes, both inputs should work similarly.
@@ -343,7 +355,6 @@ inputs (it should be displayed on the right side of the Price range inputs). *
 
 \* - TODO: add Priority, Steps to reproduce, Actual result, Expected result,
 Screenshots, Environment, etc.
-
 
 ### Feedback on how to improve the quality in the team
 1. It can be beneficial to include SDETs/test automation engineers in
