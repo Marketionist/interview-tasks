@@ -18,7 +18,8 @@ function cropStringOfWords (stringOfWords, numberOfChars) {
     }
 
     arrayOfWords.map((word) => {
-        extendedResultSentence = resultSentence + ` ${word}`;
+        let extendedResultSentence = resultSentence + ` ${word}`;
+
         if (extendedResultSentence.length <= numberOfChars) {
             resultSentence = extendedResultSentence;
         }
