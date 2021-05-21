@@ -11,7 +11,8 @@ Set of interview coding tasks written on JavaScript / Node.js:
 - [ransom-note.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/ransom-note.js): check if all needed words are present in provided text
 - [print-object-properties.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/print-object-properties.js): sorts and outputs the incoming arguments as numeric
 and string object properties
+- [crop-strings-of-words.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/crop-strings-of-words.js): crops the amount of words in the sentence to fit the specified length
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
-on [github](https://github.com/Marketionist/interview-tasks).
+on [GitHub](https://github.com/Marketionist/interview-tasks).
