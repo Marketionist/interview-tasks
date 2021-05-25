@@ -11,4 +11,4 @@ Collection of interview tasks for test automation engineers and web developers w
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
-on [github](https://github.com/Marketionist/interview-tasks).
+on [GitHub](https://github.com/Marketionist/interview-tasks).
