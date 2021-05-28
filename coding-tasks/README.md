@@ -12,6 +12,7 @@ Set of interview coding tasks written on JavaScript / Node.js:
 - [print-object-properties.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/print-object-properties.js): sorts and outputs the incoming arguments as numeric
 and string object properties
 - [crop-strings-of-words.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/crop-strings-of-words.js): crops the amount of words in the sentence to fit the specified length
+- [integers-sum-up-to-zero.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/integers-sum-up-to-zero.js): creates an array of unique integers that sum up to zero
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
