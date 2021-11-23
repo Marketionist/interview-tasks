@@ -4,7 +4,7 @@ A set of happy path e2e tests to verify the log in feature
 
 ## Supported versions
 Should work on any [Node.js](http://nodejs.org/) version >=12.16.1. Tested on
-Node.js 14.15.1.
+Node.js 14.15.1 and 16.13.0.
 
 ## Table of contents
 
@@ -13,7 +13,7 @@ Node.js 14.15.1.
 * [Thanks](#thanks)
 
 ## Installation
-1. Install [Node.js](http://nodejs.org/) 14.x.x (LTS)
+1. Install [Node.js](http://nodejs.org/) 16.x.x (LTS)
 2. Clone this repository: `git clone git@github.com:Marketionist/interview-tasks.git`
 3. Go to login-feature folder: `cd interview-tasks/e2e-testing/login-feature/`
 4. Install all dependencies: `npm install`

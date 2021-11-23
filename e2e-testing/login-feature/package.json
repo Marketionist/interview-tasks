@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "A set of happy path e2e tests to verify the log in feature",
     "engines": {
-        "node": ">=8.6.x"
+        "node": ">=12.16.1"
     },
     "scripts": {
         "test": "wdio run ./wdio.conf.js --spec login.test.js"
