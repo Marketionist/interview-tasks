@@ -6,7 +6,7 @@
         "node": ">=8.6.x"
     },
     "scripts": {
-        "test": "npx wdio run ./wdio.conf.js --spec login.test.js"
+        "test": "wdio run ./wdio.conf.js --spec login.test.js"
     },
     "repository": {
         "type": "git",
