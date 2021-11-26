@@ -27,8 +27,8 @@
   "homepage": "https://github.com/Marketionist/interview-tasks#readme",
   "devDependencies": {
     "cucumber": "6.0.5",
-    "testcafe": "^1.9.4",
-    "gherkin-testcafe": "^2.5.2",
-    "testcafe-cucumber-steps": "^1.16.0"
+    "testcafe": "^1.17.1",
+    "gherkin-testcafe": "^5.1.0",
+    "testcafe-cucumber-steps": "^1.20.1"
   }
 }
