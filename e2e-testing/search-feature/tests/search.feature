@@ -49,16 +49,14 @@ Feature: Search
     And inputPriceFrom from search-page should be present
     And inputPriceTo from search-page should be present
 
-  Scenario: Click on the product image - user should be redirected to the product page
+  Scenario Outline: Click on the <element> - user should be redirected to the product page
     Given user goes to urlSearch from search-page
     And user types textNok from search-page in inputCentralSearch from search-page
     And user clicks buttonCentralSearch from search-page
-    When user clicks imageNokia1020 from search-page
+    When user clicks <element> from search-page
     Then URL should be urlNokia1020 from search-page
 
-  Scenario: Click on the product name - user should be redirected to the product page
-    Given user goes to urlSearch from search-page
-    And user types textNok from search-page in inputCentralSearch from search-page
-    And user clicks buttonCentralSearch from search-page
-    When user clicks blockProductNameNokia1020 from search-page
-    Then URL should be urlNokia1020 from search-page
+  Examples:
+    | element                   |
+    | imageNokia1020            |
+    | blockProductNameNokia1020 |
