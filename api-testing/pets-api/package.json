@@ -1,0 +1,33 @@
+{
+  "name": "pets-api",
+  "version": "0.0.1",
+  "description": "A set of API tests to validate pets",
+  "engines": {
+    "node": ">=10.13.x"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "interview",
+    "interview tasks",
+    "interview pets api",
+    "interview pets api testing tasks"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "axios-retry": "^3.2.4",
+    "jest": "^27.4.5",
+    "js-automation-tools": "^1.2.0"
+  }
+}
