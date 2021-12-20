@@ -1,4 +1,4 @@
-# api-testing
+# discounts-api
 
 A set of API tests to validate discounts
 
@@ -9,9 +9,9 @@ Node.js 10.15.1.
 ## Installation
 1. Install [Node.js](http://nodejs.org/) 10.x.x (LTS)
 2. Clone this repository
-3. Go to api-testing folder: `cd api-testing/`
+3. Go to api-testing folder: `cd api-testing/discounts-api`
 4. Install all dependencies: `npm install`
-5. Run tests: `npm run test`
+5. Run tests: `npm test`
 
 ## Initial task
 A sample test may look like:
@@ -113,4 +113,4 @@ corrections we will do - for now we will not check edge cases and nominal values
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
-on [github](https://github.com/Marketionist/interview-tasks).
+on [GitHub](https://github.com/Marketionist/interview-tasks).

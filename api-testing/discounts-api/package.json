@@ -1,5 +1,5 @@
 {
-  "name": "api-testing",
+  "name": "discounts-api",
   "version": "0.0.1",
   "description": "A set of API tests to validate discounts",
   "engines": {
@@ -15,8 +15,8 @@
   "keywords": [
     "interview",
     "interview tasks",
-    "interview api tests",
-    "interview api testing tasks"
+    "interview discounts api tests",
+    "interview discounts api testing tasks"
   ],
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
