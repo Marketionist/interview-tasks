@@ -7,9 +7,9 @@ const { setAxiosBaseUrl, enableAxiosRetry } = require(
 );
 
 // Extend jest tests timeout to 40 s
-jest.setTimeout(40 * 1000);
+jest.setTimeout(40000);
 
-// Configire axios
+// Configure axios
 const baseUrl = 'https://petstore.swagger.io/v2';
 const retriesNumber = 3;
 const retryInterval = 3000;
@@ -31,7 +31,7 @@ describe('Testing /pet endpoints: ', () => {
             arrayPetData[i] = PetController.createPetData(arrayPetIds[i]);
         }
 
-        arrayPetData.map(async (value) => {
+        arrayPetData.forEach(async (value) => {
             arrayPets.push(PetController.createPet(axiosClient, value));
         });
 
@@ -40,7 +40,7 @@ describe('Testing /pet endpoints: ', () => {
     // Teardown - delete pets
     afterAll(async () => {
         let arrayPetsCleared = arrayPetsToClear.map(async (value) => {
-            await PetController.deletePet(axiosClient, value);
+            return await PetController.deletePet(axiosClient, value);
         });
 
         await Promise.all(arrayPetsCleared);
