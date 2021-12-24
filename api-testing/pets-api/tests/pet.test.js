@@ -17,7 +17,7 @@ const axiosClient = setAxiosBaseUrl(baseUrl);
 enableAxiosRetry(axiosClient, retriesNumber, retryInterval);
 
 describe('Testing /pet endpoints: ', () => {
-    const numberOfPets = 4;
+    const numberOfPets = 5;
     let arrayPetIds = [];
     let arrayPetData = [];
     let arrayPets = [];
@@ -83,7 +83,7 @@ describe('Testing /pet endpoints: ', () => {
         const response = await axiosClient({
             method: 'delete',
             url: `/pet/${newPet3.data.id}`,
-            headers: { 'api_key': 'special-key'}
+            headers: { 'api_key': 'special-key' }
         });
 
         expect(response.status).toBe(200);
@@ -99,7 +99,7 @@ describe('Testing /pet endpoints: ', () => {
         await axiosClient({
             method: 'delete',
             url: `/pet/${newPet4.data.id}`,
-            headers: { 'api_key': 'special-key'}
+            headers: { 'api_key': 'special-key' }
         });
 
         const response = await axiosClient({
@@ -110,6 +110,30 @@ describe('Testing /pet endpoints: ', () => {
 
         expect(response.status).toBe(404);
         expect(response.data).toHaveProperty('message', 'Pet not found');
+    });
+
+    test('PUT /pet should update a pet', async () => {
+        const indexPet5 = 4;
+        // Create a new pet
+        await arrayPets[indexPet5];
+        let newPet5Data = arrayPetData[indexPet5];
+
+        newPet5Data.tags.push({
+            'id': 2,
+            'name': 'added awesome tag 3'
+        });
+
+        const newPet5Updated = await axiosClient({
+            method: 'put',
+            url: '/pet',
+            data: newPet5Data
+        });
+
+        expect(newPet5Updated.status).toBe(200);
+        expect(newPet5Updated.data.tags).toEqual(newPet5Data.tags);
+
+        // Accumulate pet ids to be deleted in afterAll
+        arrayPetsToClear.push(arrayPetIds[indexPet5]);
     });
 
 });
