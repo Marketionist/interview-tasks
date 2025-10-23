@@ -59,10 +59,10 @@ Node.js 12.13.1.
 
 ## Installation local
 1. Install [Node.js](http://nodejs.org/) 12.x.x (LTS)
-2. Clone this repository `git clone https://github.com/Marketionist/interview-tasks.git`
+2. Clone this repository: `git clone https://github.com/Marketionist/interview-tasks.git`
 3. Go to backend folder: `cd interview-tasks/backend/matching-score/`
 4. Install all dependencies: `npm install`
-5. Run linting `npm run lint`
+5. Run linting: `npm run lint`
 6. Run unit tests: `npm test`
 
 ## Installation local with Docker
