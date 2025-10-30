@@ -1,26 +1,33 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
-export class LoginPage extends BasePage {
-    public email = process.env.LOGIN ?? '';
-    public password = process.env.PASSWORD ?? '';
+export class LogInPage extends BasePage {
+    public memberEmail = process.env.MEMBER_LOGIN ?? '';
+    public memberPassword = process.env.MEMBER_PASS ?? '';
+    public userEmail = process.env.USER_LOGIN ?? '';
+    public userPassword = process.env.USER_PASS ?? '';
 
-    private baseUrl = 'https://myezra-staging.ezra.com';
     private buttonAcceptCookies = '[data-tid="banner-accept"]';
     private inputEmail = '#email';
     private inputPassword = '#password';
-    private buttonLogIn = '//*[contains(@class, "submit-btn") and ' +
+    private buttonSubmit = '//*[contains(@class, "submit-btn") and ' +
         'not(contains(@class, "--appear-disabled-new"))]';
 
     constructor(page: Page) {
         super(page);
     }
 
-    async logIn (email: string, password: string) {
-        await this.page.goto(`${this.baseUrl}/sign-in`);
-        await this.page.locator(this.buttonAcceptCookies).click();
+    async logIn (url: string, email: string, password: string): Promise<void> {
+        await this.page.goto(`${url}/sign-in`);
         await this.page.locator(this.inputEmail).fill(email);
         await this.page.locator(this.inputPassword).fill(password);
-        await this.page.locator(this.buttonLogIn).click();
+
+        const buttonAcceptCookies = this.page.locator(this.buttonAcceptCookies);
+
+        if (await buttonAcceptCookies.isVisible()) {
+            await buttonAcceptCookies.click();
+        }
+
+        await this.page.locator(this.buttonSubmit).click();
     }
 }
