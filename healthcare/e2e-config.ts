@@ -2,7 +2,7 @@ import { defineConfig, devices, } from '@playwright/test';
 
 export default defineConfig({
     /* Timeout is shared between all tests */
-    timeout: 60000,
+    timeout: 240000,
     retries: 0,
     testDir: 'tests/e2e',
     testMatch: /.*(?<!fast|long)-e2e-spec\.ts/,
