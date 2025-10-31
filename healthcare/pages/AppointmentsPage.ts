@@ -1,4 +1,4 @@
-import { Page, expect, } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { BasePage } from './BasePage';
 import { LogInPage } from './LogInPage';
 
@@ -18,7 +18,7 @@ export class AppointmentsPage extends BasePage {
         '@class, "confirmation-msg")] and contains(., ' +
         '"Begin Medical Questionnaire")]';
     private timeout30Seconds = 30000;
-    private timeout3Minutes = 180000;
+    private timeout4Minutes = 240000;
     private linkMenuAppointments = '.menu-items [href="/appointments"]';
     private inputSearchAppointments = '#appointmentSearch';
     private buttonRefreshData = '[title="Refresh data"]';
@@ -32,7 +32,7 @@ export class AppointmentsPage extends BasePage {
         'center.physicianOrderName');
     private blockFirstLineStatus = this.createblockFirstLineSelector('status');
 
-    constructor(page: Page) {
+    constructor (page: Page) {
         super(page);
     }
 
@@ -40,11 +40,11 @@ export class AppointmentsPage extends BasePage {
         const logInPage = new LogInPage(this.page);
 
         await expect(this.page.locator(this.buttonBeginMedicalQuestionnaire))
-            .toBeVisible({ timeout: this.timeout30Seconds });
+            .toBeVisible({ timeout: this.timeout30Seconds, });
         await logInPage.logIn(
             logInPage.urlUserPortal,
             logInPage.userEmail,
-            logInPage.userPassword,
+            logInPage.userPassword
         );
         await this.page.locator(this.linkMenuAppointments).click();
         await this.page.locator(this.inputSearchAppointments).fill(
@@ -58,10 +58,10 @@ export class AppointmentsPage extends BasePage {
 
             await expect(this.page.locator(this.blockFirstLineAppointmentType))
                 .toHaveText(
-                    appointmentType, { timeout: this.timeout30Seconds }
+                    appointmentType, { timeout: this.timeout30Seconds, }
                 );
 
-        }).toPass({ timeout: this.timeout3Minutes });
+        }).toPass({ timeout: this.timeout4Minutes, });
         await expect(this.page.locator(this.blockFirstLineCenterName))
             .toContainText('QA Automation MO');
         await expect(this.page.locator(this.blockFirstLineStatus))

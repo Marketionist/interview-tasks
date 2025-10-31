@@ -14,6 +14,9 @@ A set of happy path end-to-end and API tests to verify the healthcare portal.
 * [Deliverables](#deliverables)
   * [Trade-offs and assumptions](#trade-offs-and-assumptions)
   * [Test cases](#test-cases)
+  * [Solution for Question 1 Part 1 and 2](#solution-for-question-1-part-1-and-2)
+  * [Solution for Question 2 Part 1 and 2](#solution-for-question-2-part-1-and-2)
+  * [Solution for Question 2 Part 3](#solution-for-question-2-part-3)
   * [Potential improvement suggestions](#potential-improvement-suggestions)
 * [Thanks](#thanks)
 
@@ -26,25 +29,21 @@ A set of happy path end-to-end and API tests to verify the healthcare portal.
 ```bash
 npm run install:test-dependencies
 ```
-OR if you have an older OS:
+OR if you have an older OS that does not support the latest Google Chrome
+(will download Firefox only):
 ```bash
 npm run install:test-dependencies-old
 ```
 
 ## Running tests
 
-- To launch API tests run:
-    ```bash
-    npm run test:api
-    ```
-
 - To launch end-to-end tests run:
     ```bash
-    LOGIN='...' PASSWORD='...' npm run test:e2e
+    MEMBER_LOGIN='...' MEMBER_PASS='...' USER_LOGIN='...' USER_PASS='...' npm run test:e2e
     ```
 
-    > Note: member users can be created on a Member Facing Portal without any
-    > concerns.
+    > Note: multiple member users can be created on a Member Facing Portal
+    > without any concerns.
 
 ## Initial task
 
@@ -101,8 +100,8 @@ decisions required for production-level.
 
 ### Trade-offs and assumptions
 
-1. As we have a limited amount of time and to optimize the efforts, only 3 first
-happy path test cases with priority 1 will be automated for now.
+1. As there is a limited amount of time and to optimize the efforts, only 3
+first happy path test cases will be automated for now.
 
 2. An assumption was made that 2 most used products are MRI Scan and Heart &
 Lungs CT Scan, thus they were covered as a priority 1.
@@ -111,23 +110,27 @@ Lungs CT Scan, thus they were covered as a priority 1.
 should be supported, an assumption will be made that the booking flow should
 work in Google Chrome as it is the most popular and widely used browser.
 
-4. Additional verifications for price changes should be added for
+4. For the sake of simplicity "All Available" option is used for State on
+https://myezra-staging.ezra.com/book-scan/schedule-scan.
+
+5. For the sake of simplicity 28th day of the next month and 3 first time slots
+are used on https://myezra-staging.ezra.com/book-scan/schedule-scan.
+
+6. Additional verifications for price changes should be added for
 https://myezra-staging.ezra.com/book-scan/reserve-appointment:
 - After "Continue Without Heart Calcium" is selected.
 - After entering a promo code.
 But they are less important than patient's health, so a trade-off was made.
 
-5. As the amount of tests is not big for now the concurrency for test execution
-will be set to 1. It can easily be extended later on. In addition to that, tests
-can be run in Continuous Integration system by launching `npm run test-ci` (will
-trigger a run in the headless mode).
+7. As the amount of tests is not big, for now the concurrency for test
+execution will be set to 1. It can easily be extended later on. For future
+scalability please see `projects` inside
+[e2e-config.ts](https://github.com/Marketionist/interview-tasks/blob/master/healthcare/e2e-config.ts).
+
+8. Additionally all code is checked for styling quality by lint and husky on
+each pre-commit.
 
 ### Test cases
-
-Test cases (for both automation and manual/exploratory testing) to get a good
-level of confidence that the main aspects of the booking flow are covered:
-
-Select your plan -> Schedule your scan -> Reserve your appointment
 
 > Note: payment card details (https://docs.stripe.com/testing):
 
@@ -140,6 +143,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
 > Country: United States
 
 > ZIP code: 12345
+
+#### Solution for Question 1 Part 1 and 2
 
 <table>
     <thead>
@@ -158,18 +163,20 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 displayed in the User Facing Portal.
                 <br>1. Log in to https://myezra-staging.ezra.com/.
                 <br>2. Click "Book a scan" button.
-                <br>3. Fill in Date of birth (for example: 10-10-1990) and select
-                sex at birth (for example: Male) - this step is needed only for
-                a new user setup.
+                <br>3. Fill in Date of birth (for example: 10-10-1990) and
+                select sex at birth (for example: Male) - this step is needed
+                only for a new user setup.
                 <br>4. Select "MRI Scan".
                 <br>5. Click "Continue" button.
-                <br>6. Select a state (for example: New York).
-                <br>7. Select a location (for example: QA Automation Center: 12345,
-                New York, NY 12345).
-                <br>8. Fill in Additional Scheduling Information (for example: Test).
-                <br>9. Select a date (or 3 different dates) and 3 time slots (for
-                example: Nov 7, 2025 • 12:01 AM; Nov 7, 2025 • 12:01 PM; Nov 7,
-                2025 • 11:31 PM).
+                <br>6. Select a state (for example: New York or leave All
+                Available).
+                <br>7. Select a location (for example: QA Automation Center:
+                12345, New York, NY 12345).
+                <br>8. Fill in Additional Scheduling Information (for example:
+                Test).
+                <br>9. Select a date (or 3 different dates) and 3 time slots
+                (for example: Nov 7, 2025 • 12:01 AM; Nov 7, 2025 • 12:01 PM;
+                Nov 7, 2025 • 11:31 PM).
                 <br>10. Click "Continue" button.
                 <br>11. Fill in payment card details.
                 <br>12. Click "Continue" button.
@@ -177,10 +184,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 displayed.
                 <br>14. Log in and go to https://staging-hub.ezra.com/appointments.
                 <br>15. Search the Appointments table by the member email (for
-                example: msbqxqan@sharklasers.com) and verify that the test
-                appointment is displayed and its status is Pending.
+                example: msbqxqan@sharklasers.com or fzmfrxmt@sharklasers.com)
+                and verify that the test appointment is displayed and its status
+                is Pending.
             </td>
-            <td></td>
+            <td>
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L20
+                <br>Video recording of this test run can be downloaded at:
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan-video.webm.
+            </td>
             <td>
                 This test case is a basic happy path scenario for the booking
                 flow.
@@ -199,7 +211,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "MRI Scan" and "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for all questions in the popup questionnaire.
+                <br>5. Select "Yes" for all questions in the popup
+                questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -212,15 +225,20 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 <br>displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L37
+                <br>Video recording of this test run
+                can be downloaded at:
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_Heart_Lungs_CT_Scan-video.webm.
+            </td>
+            <td>
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -233,7 +251,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "MRI Scan" and "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for all questions in the popup questionnaire.
+                <br>5. Select "Yes" for all questions in the popup
+                questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -246,18 +265,24 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 <br>displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
+            <td>
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L55
+                <br>Video recording of this test run can be
+                downloaded at:
+                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan_with_Heart_Lungs_CT_Scan_add-on-video.webm.
+            </td>
             <td>
                 This test case extends the basic booking flow with adding an
-                add-on. It is selected as a high prio because it introduces
+                add-on. It is selected as a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
-                <br>It seems like booking has a delay of ~2min before the status
-                gets updated in https://staging-hub.ezra.com/appointments.
+                <br>It seems like booking has a delay of up to 4min before the
+                new appointment appears in
+                https://staging-hub.ezra.com/appointments.
             </td>
         </tr>
         <tr>
@@ -283,15 +308,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -304,7 +329,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for cardiac stent in the popup questionnaire.
+                <br>5. Select "Yes" for cardiac stent in the popup
+                questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -317,15 +343,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -351,15 +377,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -386,15 +412,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -408,8 +434,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for calcium score greater than 10 in the popup
-                questionnaire.
+                <br>5. Select "Yes" for calcium score greater than 10 in the
+                popup questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -422,15 +448,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case is selected as a high prio because it introduces
-                additional functionality that can impact patient's health and
-                updates final price.
+                This test case is selected as a high priority because it
+                introduces additional functionality that can impact patient's
+                health and updates final price.
             </td>
         </tr>
         <tr>
@@ -457,13 +483,13 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case has a high prio because it introduces
+                This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
             </td>
@@ -479,7 +505,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "MRI Scan" and "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for cardiac stent in the popup questionnaire.
+                <br>5. Select "Yes" for cardiac stent in the popup
+                questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -492,13 +519,13 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case has a high prio because it introduces
+                This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
             </td>
@@ -527,13 +554,13 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case has a high prio because it introduces
+                This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
             </td>
@@ -563,13 +590,13 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case has a high prio because it introduces
+                This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
             </td>
@@ -586,8 +613,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>2. Click "Book a scan" button.
                 <br>3. Select "MRI Scan" and "Heart & Lungs CT Scan".
                 <br>4. Click "Continue" button.
-                <br>5. Select "Yes" for calcium score greater than 10 in the popup
-                questionnaire.
+                <br>5. Select "Yes" for calcium score greater than 10 in the
+                popup questionnaire.
                 <br>6. Click "Submit" button.
                 <br>7. Click "Continue Without Heart Calcium" button.
                 <br>8. Select a state.
@@ -600,13 +627,13 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>15. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>16. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>17. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>17. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
-                This test case has a high prio because it introduces
+                This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
             </td>
@@ -633,8 +660,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>14. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>15. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>16. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>16. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
@@ -663,8 +690,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>14. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>15. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>16. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>16. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
@@ -690,9 +717,10 @@ Select your plan -> Schedule your scan -> Reserve your appointment
             </td>
             <td></td>
             <td>
-                This test case is a part of the basic booking flow. It seems
-                like cancellation has a delay of ~2min before the status gets
-                updated in https://staging-hub.ezra.com/appointments.
+                This test case is a part of the basic booking flow.
+                <br>It seems like cancellation has a delay of up to 4min before
+                the status gets updated in
+                https://staging-hub.ezra.com/appointments.
             </td>
         </tr>
         <tr>
@@ -714,14 +742,15 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>12. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>13. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>14. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>14. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
                 An assumption was made that 2 most used products are MRI Scan
-                and Heart & Lungs CT Scan.
+                and Heart & Lungs CT Scan, so MRI Scan with Spine was moved down
+                as a lower priority.
             </td>
         </tr>
         <tr>
@@ -731,7 +760,8 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 appointment should be displayed in the User Facing Portal.
                 <br>1. Log in to https://myezra-staging.ezra.com/.
                 <br>2. Click "Book a scan" button.
-                <br>3. Select "MRI Scan with Skeletal and Neurological Assessment".
+                <br>3. Select "MRI Scan with Skeletal and Neurological
+                Assessment".
                 <br>4. Click "Continue" button.
                 <br>5. Select a state.
                 <br>6. Select a location.
@@ -744,39 +774,171 @@ Select your plan -> Schedule your scan -> Reserve your appointment
                 <br>12. Verify that "Begin Medical Questionnaire" button is
                 displayed.
                 <br>13. Log in and go to https://staging-hub.ezra.com/appointments.
-                <br>14. Search the Appointments table by the member email and verify
-                that the test appointment is displayed and its status is
+                <br>14. Search the Appointments table by the member email and
+                verify that the test appointment is displayed and its status is
                 Pending.
             </td>
             <td></td>
             <td>
                 An assumption was made that 2 most used products are MRI Scan
-                and Heart & Lungs CT Scan.
+                and Heart & Lungs CT Scan, so MRI Scan with Skeletal and
+                Neurological Assessment was moved down as a lower priority.
             </td>
         </tr>
     </tbody>
 </table>
 
+#### Solution for Question 2 Part 1 and 2
+
+Encounter id (`encounterId`) is exposed as a parameter in Medical Questionnaire
+URL (for example: https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}).
+This can potentially lead to possibility of guessing (or brute-forcing) other
+user's Encounter id and getting access to medical data.
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Test case</th>
+            <th>HTTP request</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+                Send request with random <strong>encounterId</strong>.
+                <br>1. Log in to https://myezra-staging.ezra.com/ as User2 (for
+                example: fzmfrxmt@sharklasers.com).
+                <br>2. Start a Medical Questionnaire.
+                <br>3. Open Network tab in browser Developer Tools and check
+                "Preserve log".
+                <br>4. Update encounterId parameter in current URL with some
+                random characters (for example: https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%22aacd9827-d6cd-422a-a9e9-424138474264%22}).
+                <br>5. Verify the requests / responses in Network tab.
+                <br>6. Verify that User2 is logged out.
+            </td>
+            <td>GET https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%22aacd9827-d6cd-422a-a9e9-424138474264%22}</td>
+            <td>
+                Using URL with random encounterId while logged in as User2.
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                Send request with <strong>encounterId</strong> of another user.
+                <br>1. Log in to https://myezra-staging.ezra.com/ as User1 (for
+                example: msbqxqan@sharklasers.com).
+                <br>2. Start a Medical Questionnaire.
+                <br>3. Copy current URL (for example:
+                https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}).
+                <br>4. Open a new browser window in incognito mode.
+                <br>5. Log in to https://myezra-staging.ezra.com/ as User2 (for
+                example: fzmfrxmt@sharklasers.com).
+                <br>6. Open Network tab in browser Developer Tools and check
+                "Preserve log".
+                <br>7. Open https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}.
+                <br>8. Verify the requests / responses in Network tab.
+                <br>9. Verify that User2 is logged out.
+            </td>
+            <td>GET https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}</td>
+            <td>
+                Using URL from User1 while logged in as User2.
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+                Send request with <strong>encounterId</strong> of another user
+                and <strong>clearData</strong> set to false.
+                <br>1. Log in to https://myezra-staging.ezra.com/ as User1.
+                <br>2. Start a Medical Questionnaire.
+                <br>3. Copy current URL.
+                <br>4. Open a new browser window in incognito mode.
+                <br>5. Log in to https://myezra-staging.ezra.com/ as User2.
+                <br>6. Open Network tab in browser Developer Tools and check
+                "Preserve log".
+                <br>7. Open https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=false&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}.
+                <br>8. Verify the requests / responses in Network tab.
+                <br>9. Verify that User2 is logged out.
+            </td>
+            <td>GET https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=false&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}</td>
+            <td>
+                Using URL with clearData=false from User1 while logged in as
+                User2.
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>
+                Send request with <strong>encounterId</strong> of another user
+                and <strong>clearData</strong> set to false and
+                <strong>direct</strong> set to false.
+                <br>1. Log in to https://myezra-staging.ezra.com/ as User1.
+                <br>2. Start a Medical Questionnaire.
+                <br>3. Copy current URL.
+                <br>4. Open a new browser window in incognito mode.
+                <br>5. Log in to https://myezra-staging.ezra.com/ as User2.
+                <br>6. Open Network tab in browser Developer Tools and check
+                "Preserve log".
+                <br>7. Open https://myezra-staging.ezra.com/medical-questionnaire?direct=false&clearData=false&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}.
+                <br>8. Verify the requests / responses in Network tab.
+                <br>9. Verify that User2 is logged out.
+            </td>
+            <td>GET https://myezra-staging.ezra.com/medical-questionnaire?direct=false&clearData=false&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}</td>
+            <td>
+                Using URL with clearData=false and direct=false from User1 while
+                logged in as User2.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+#### Solution for Question 2 Part 3
+
+Assigning each user a separate Bearer token is a good practice. It grants access
+to the endpoint to whoever "bears" or possesses it. Using Authorization header
+with Bearer token (`Authorization: Bearer ...`) in HTTP authentication helps to
+control the access to protected resources/endpoints.
+
+Testing the existing (and especially new) endpoints with different combinations
+of parameters can be a good idea. Also to check for XSS attacks vulnerability
+all inputs can be tested with a code like this:
+`<script>alert('Code executed - XSS risk!');</script>`.
+
+There is always a risk that hackers can obtain security tokens or even session
+cookies. So reliable and fast rotation processes with clear playbooks should be
+created. In case if emergency rotation is invoked users that are currently
+logged in or are using hardcoded credentials can lose their access, so robust
+communication strategies and graceful fallbacks should be implemented.
+
 ### Potential improvement suggestions
-1. On https://staging-hub.ezra.com/members add `alt` and `title` html attributes
+
+1. While selecting date of birth at
+https://myezra-staging.ezra.com/sign-up/select-plan it can be helpful to display
+a calendar after the input is clicked (for users to be able to click on a date
+in addition to just typing it in).
+2. While selecting appointment date at
+https://myezra-staging.ezra.com/book-scan/schedule-scan it can be helpful to
+display an input in addition to a calendar (for users to be able to type it in
+addition to just clicking).
+3. While searching for appointment at https://staging-hub.ezra.com/appointments
+there is no way to differentiate between MRI Scan with Heart & Lungs CT Scan
+add-on and without it, so it can be beneficial to extend the data that is
+displayed in APPOINTMENT TYPE/ENCOUNTER TYPE columns.
+4. On https://staging-hub.ezra.com/members add `alt` and `title` html attributes
 for all icons (menu, filters). The `title` attribute will display a short
 tooltip with additional information when a user hovers over an element. The
 `alt` attribute will help users with sight deficiencies that are relying on
 screen readers.
-2. While selecting date of birth at
-https://myezra-staging.ezra.com/sign-up/select-plan it can be helpful to display
-a calendar after the input is clicked (for users to be able to click on a date
-in addition to just typing it in).
-3. While searching for appointment at https://staging-hub.ezra.com/appointments
-there is no way to differentiate between MRI Scan with Heart & Lungs CT Scan
-add-on and without it, so it can be beneficial to extend the data in ENCOUNTER
-TYPE column.
-4. While searching the Appointments table at
+5. While searching the Appointments table at
 https://staging-hub.ezra.com/appointments no results are displayed for partial
 email search (for example: @sharklasers.com) - it can be beneficial to add
 partial email search for the sake of identifying patterns or clusters of
 fraudulent emails.
 
 ## Thanks
-If this script was helpful for you, please give it a **★ Star**
-on [GitHub](https://github.com/Marketionist/interview-tasks).
+
+If this collection of code examples was helpful to you, please give it a
+**★ Star** on [GitHub](https://github.com/Marketionist/interview-tasks).
