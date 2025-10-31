@@ -1,4 +1,4 @@
-import { defineConfig, devices, } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
     /* Timeout is shared between all tests */
@@ -9,7 +9,7 @@ export default defineConfig({
     testMatch: /.*(?<!fast|long)-e2e-spec\.ts/,
     /* Use list and json reporters while running on CI and only list locally */
     reporter: process.env.CI ?
-        [['list',], ['json', { outputFile: 'test-results/report.json' }],] :
+        [['list',], ['json', { outputFile: 'test-results/report.json', },],] :
         'list',
     use: {
         ...devices['Desktop Firefox'],

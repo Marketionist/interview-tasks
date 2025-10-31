@@ -13,7 +13,7 @@ export class LogInPage extends BasePage {
     private buttonSubmit = '//*[contains(@class, "submit-btn") and ' +
         'not(contains(@class, "--appear-disabled-new"))]';
 
-    constructor(page: Page) {
+    constructor (page: Page) {
         super(page);
     }
 

@@ -1,4 +1,4 @@
-import { Page, } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class ScheduleScanPage extends BasePage {
@@ -22,7 +22,7 @@ export class ScheduleScanPage extends BasePage {
     private buttonIUnderstand = '//*[ancestor::*[contains(@class, ' +
         '"--actions_offline_center")] and contains(., "I understand")]';
 
-    constructor(page: Page) {
+    constructor (page: Page) {
         super(page);
     }
 

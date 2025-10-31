@@ -1,4 +1,4 @@
-import { Page, } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class ReserveAppointmentPage extends BasePage {
@@ -10,7 +10,7 @@ export class ReserveAppointmentPage extends BasePage {
     private selectCountry = '#Field-countryInput';
     private inputPostalCode = '#Field-postalCodeInput';
 
-    constructor(page: Page) {
+    constructor (page: Page) {
         super(page);
     }
 
@@ -27,7 +27,7 @@ export class ReserveAppointmentPage extends BasePage {
         await inputCardInIframe.fill('4242 4242 4242 4242');
         await inputExpirationInIframe.fill('12 / 34');
         await inputSecurityInIframe.fill('567');
-        await selectCountryInIframe.selectOption({ label: 'United States' });
+        await selectCountryInIframe.selectOption({ label: 'United States', });
         await inputPostalInIframe.fill('12345');
         await this.page.locator(this.buttonContinue).click();
     }

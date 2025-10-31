@@ -1,0 +1,42 @@
+{
+  "name": "healthcare",
+  "version": "0.0.1",
+  "description": "A set of happy path end-to-end and API tests to verify the healthcare portal",
+  "engines": {
+    "node": ">=22.3.x"
+  },
+  "scripts": {
+    "install:test-dependencies-old": "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true npm install && npx playwright install firefox",
+    "install:test-dependencies": "npm install && npx playwright install",
+    "lint": "node ./node_modules/.bin/eslint *config.ts pages/**/*.ts tests/**/*.ts --ext .js,.ts,.tsx .",
+    "test:e2e": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Happy path'",
+    "test:e2e:fast": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Fast'",
+    "test:e2e:long": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Long'",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "interview healthcare",
+    "interview tasks healthcare",
+    "interview e2e tests healthcare",
+    "e2e tests for healthcare",
+    "interview api tests healthcare",
+    "api tests for healthcare"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^8.57.1",
+    "husky": "^9.1.7"
+  }
+}

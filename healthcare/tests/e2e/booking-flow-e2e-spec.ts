@@ -1,4 +1,4 @@
-import { test, } from '@playwright/test';
+import { test } from '@playwright/test';
 import { LogInPage } from '../../pages/LogInPage';
 import { SelectPlanPage } from '../../pages/SelectPlanPage';
 import { ScheduleScanPage } from '../../pages/ScheduleScanPage';
@@ -13,7 +13,7 @@ test.describe('Booking flow', () => {
         await logInPage.logIn(
             logInPage.urlMemberPortal,
             logInPage.memberEmail,
-            logInPage.memberPassword,
+            logInPage.memberPassword
         );
     });
 

@@ -1,6 +1,7 @@
 # interview-tasks
 
-Collection of interview tasks for test automation engineers and web developers written in JavaScript / Node.js:
+Collection of interview tasks for test automation engineers and web developers
+written in JavaScript / TypeScript / Node.js:
 
 1. [Coding tasks](https://github.com/Marketionist/interview-tasks/tree/master/coding-tasks)
 2. [End-to-end (e2e) testing](https://github.com/Marketionist/interview-tasks/tree/master/e2e-testing)
@@ -8,6 +9,7 @@ Collection of interview tasks for test automation engineers and web developers w
 4. [Load testing](https://github.com/Marketionist/interview-tasks/tree/master/load-testing)
 5. [Backend](https://github.com/Marketionist/interview-tasks/tree/master/backend)
 6. [Telecom](https://github.com/Marketionist/interview-tasks/tree/master/telecom)
+7. [Healthcare](https://github.com/Marketionist/interview-tasks/tree/master/healthcare)
 
 > Note: also see [Playwright playground](https://github.com/Marketionist/playwright-playground) for API, end-to-end and visual regression test examples.
 

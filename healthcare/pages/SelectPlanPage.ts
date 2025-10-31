@@ -1,4 +1,4 @@
-import { Page, } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class SelectPlanPage extends BasePage {
@@ -48,7 +48,7 @@ export class SelectPlanPage extends BasePage {
         '"--appear-disabled")) and contains(., ' +
         '"Continue Without Heart Calcium")]';
 
-    constructor(page: Page) {
+    constructor (page: Page) {
         super(page);
     }
 
