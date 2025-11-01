@@ -11,14 +11,12 @@ A set of happy path end-to-end and API tests to verify the healthcare portal.
 * [Installation](#installation)
 * [Running tests](#running-tests)
 * [Initial task](#initial-task)
-* [Deliverables](#deliverables)
-  * [Trade-offs and assumptions](#trade-offs-and-assumptions)
-  * [Test cases](#test-cases)
+* [Trade-offs and assumptions](#trade-offs-and-assumptions)
+* [Test cases](#test-cases)
   * [Solution for Question 1 Part 1 and 2](#solution-for-question-1-part-1-and-2)
   * [Solution for Question 2 Part 1 and 2](#solution-for-question-2-part-1-and-2)
   * [Solution for Question 2 Part 3](#solution-for-question-2-part-3)
-  * [Potential improvement suggestions](#potential-improvement-suggestions)
-* [Thanks](#thanks)
+* [Potential improvement suggestions](#potential-improvement-suggestions)
 
 ## Installation
 
@@ -96,9 +94,7 @@ would implement in the future.
 Object Model). Your submission must demonstrate architecture, coding, and design
 decisions required for production-level.
 
-## Deliverables
-
-### Trade-offs and assumptions
+## Trade-offs and assumptions
 
 1. As there is a limited amount of time and to optimize the efforts, only 3
 first happy path test cases will be automated for now.
@@ -130,7 +126,7 @@ scalability please see `projects` inside
 8. Additionally all code is checked for styling quality by lint and husky on
 each pre-commit.
 
-### Test cases
+## Test cases
 
 > Note: payment card details (https://docs.stripe.com/testing):
 
@@ -144,14 +140,13 @@ each pre-commit.
 
 > ZIP code: 12345
 
-#### Solution for Question 1 Part 1 and 2
+### Solution for Question 1 Part 1 and 2
 
 <table>
     <thead>
         <tr>
             <th>#</th>
             <th>Test case</th>
-            <th>Automated in</th>
             <th>Comments</th>
         </tr>
     </thead>
@@ -189,14 +184,11 @@ each pre-commit.
                 is Pending.
             </td>
             <td>
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L20
-                <br>Video recording of this test run can be downloaded at:
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan-video.webm.
-            </td>
-            <td>
                 This test case is a basic happy path scenario for the booking
                 flow.
-                <br><strong>BUG</strong>: selecting "Alaska" leads to a wrong
+                <br><br>Automated <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L20" rel="nofollow">here</a>.
+                <br><br>Video recording of this test run can be downloaded <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan-video.webm" rel="nofollow">here</a>.
+                <br><br><strong>BUG</strong>: selecting "Alaska" leads to a wrong
                 location being displayed: "SimonMed Imaging Centers: 30 Street,
                 1, Toronto, AK 11111-1111".
             </td>
@@ -230,15 +222,11 @@ each pre-commit.
                 Pending.
             </td>
             <td>
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L37
-                <br>Video recording of this test run
-                can be downloaded at:
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_Heart_Lungs_CT_Scan-video.webm.
-            </td>
-            <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
                 health and updates final price.
+                <br><br>Automated <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L37" rel="nofollow">here</a>.
+                <br><br>Video recording of this test run can be downloaded <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_Heart_Lungs_CT_Scan-video.webm" rel="nofollow">here</a>.
             </td>
         </tr>
         <tr>
@@ -270,17 +258,13 @@ each pre-commit.
                 Pending.
             </td>
             <td>
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L55
-                <br>Video recording of this test run can be
-                downloaded at:
-                https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan_with_Heart_Lungs_CT_Scan_add-on-video.webm.
-            </td>
-            <td>
                 This test case extends the basic booking flow with adding an
                 add-on. It is selected as a high priority because it introduces
                 additional functionality that can impact patient's health and
                 updates final price.
-                <br>It seems like booking has a delay of up to 4min before the
+                <br><br>Automated <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/tests/e2e/booking-flow-e2e-spec.ts#L55" rel="nofollow">here</a>.
+                <br><br>Video recording of this test run can be downloaded <a href="https://github.com/Marketionist/interview-tasks/blob/master/healthcare/videos/Schedule_MRI_Scan_with_Heart_Lungs_CT_Scan_add-on-video.webm" rel="nofollow">here</a>.
+                <br><br>It seems like booking has a delay of ~4min before the
                 new appointment appears in
                 https://staging-hub.ezra.com/appointments.
             </td>
@@ -312,7 +296,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
@@ -347,7 +330,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
@@ -381,7 +363,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
@@ -416,7 +397,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
@@ -452,7 +432,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case is selected as a high priority because it
                 introduces additional functionality that can impact patient's
@@ -487,7 +466,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
@@ -523,7 +501,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
@@ -558,7 +535,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
@@ -594,7 +570,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
@@ -631,7 +606,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 This test case has a high priority because it introduces
                 additional functionality that can impact patient's health and
@@ -664,7 +638,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
             </td>
         </tr>
@@ -694,7 +667,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
             </td>
         </tr>
@@ -715,10 +687,9 @@ each pre-commit.
                 <br>8. Search the Appointments table by the member email and
                 verify that the test appointment status is Cancelled.
             </td>
-            <td></td>
             <td>
                 This test case is a part of the basic booking flow.
-                <br>It seems like cancellation has a delay of up to 4min before
+                <br>It seems like cancellation has a delay of ~4min before
                 the status gets updated in
                 https://staging-hub.ezra.com/appointments.
             </td>
@@ -746,7 +717,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 An assumption was made that 2 most used products are MRI Scan
                 and Heart & Lungs CT Scan, so MRI Scan with Spine was moved down
@@ -778,7 +748,6 @@ each pre-commit.
                 verify that the test appointment is displayed and its status is
                 Pending.
             </td>
-            <td></td>
             <td>
                 An assumption was made that 2 most used products are MRI Scan
                 and Heart & Lungs CT Scan, so MRI Scan with Skeletal and
@@ -788,7 +757,7 @@ each pre-commit.
     </tbody>
 </table>
 
-#### Solution for Question 2 Part 1 and 2
+### Solution for Question 2 Part 1 and 2
 
 Encounter id (`encounterId`) is exposed as a parameter in Medical Questionnaire
 URL (for example: https://myezra-staging.ezra.com/medical-questionnaire?direct=true&clearData=true&extraData={%22encounterId%22:%2280d6408d-7b1f-4ace-b493-fc5782502cdb%22}).
@@ -895,7 +864,7 @@ user's Encounter id and getting access to medical data.
     </tbody>
 </table>
 
-#### Solution for Question 2 Part 3
+### Solution for Question 2 Part 3
 
 Assigning each user a separate Bearer token is a good practice. It grants access
 to the endpoint to whoever "bears" or possesses it. Using Authorization header
@@ -913,7 +882,7 @@ created. In case if emergency rotation is invoked users that are currently
 logged in or are using hardcoded credentials can lose their access, so robust
 communication strategies and graceful fallbacks should be implemented.
 
-### Potential improvement suggestions
+## Potential improvement suggestions
 
 1. While selecting date of birth at
 https://myezra-staging.ezra.com/sign-up/select-plan it can be helpful to display
@@ -937,8 +906,3 @@ https://staging-hub.ezra.com/appointments no results are displayed for partial
 email search (for example: @sharklasers.com) - it can be beneficial to add
 partial email search for the sake of identifying patterns or clusters of
 fraudulent emails.
-
-## Thanks
-
-If this collection of code examples was helpful to you, please give it a
-**★ Star** on [GitHub](https://github.com/Marketionist/interview-tasks).
