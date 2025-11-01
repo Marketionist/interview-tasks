@@ -12,7 +12,7 @@
     "test:e2e": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Happy path'",
     "test:e2e:fast": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Fast'",
     "test:e2e:long": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Long'",
-    "prepare": "husky"
+    "prepare": "cd .. && husky ./healthcare/.husky"
   },
   "repository": {
     "type": "git",
