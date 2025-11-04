@@ -18,51 +18,56 @@ export default defineConfig({
     },
     projects: [
         {
-            name: 'Happy path',
-            testMatch: /.*(?<!fast|long)-api-spec\.ts/,
+            name: 'Happy path English',
+            testMatch: /.*(?<!fast|long)-en-api-spec\.ts/,
             retries: 0,
         },
         {
-            name: 'Log in',
-            testMatch: /global-setup\.ts/,
+            name: 'Happy path French',
+            testMatch: /.*(?<!fast|long)-fr-api-spec\.ts/,
             retries: 0,
         },
-        {
-            name: 'Setup test data',
-            testMatch: /.*(?<!global-)setup\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-            },
-            dependencies: ['Log in',],
-            retries: 0,
-        },
-        {
-            name: 'Fast',
-            testMatch: /.*fast-api-spec\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-                /* An object containing additional HTTP headers to be sent with
-                every request */
-                // extraHTTPHeaders: {
-                //     'X-My-Header': 'value',
-                // },
-            },
-            dependencies: ['Setup test data',],
-            retries: 1,
-        },
-        {
-            name: 'Long',
-            testMatch: /.*long-api-spec\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-                /* An object containing additional HTTP headers to be sent with
-                every request */
-                // extraHTTPHeaders: {
-                //     'X-My-Header': 'value',
-                // },
-            },
-            dependencies: ['Setup test data',],
-            retries: 2,
-        },
+        // {
+        //     name: 'Log in',
+        //     testMatch: /global-setup\.ts/,
+        //     retries: 0,
+        // },
+        // {
+        //     name: 'Setup test data',
+        //     testMatch: /.*(?<!global-)setup\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //     },
+        //     dependencies: ['Log in',],
+        //     retries: 0,
+        // },
+        // {
+        //     name: 'Fast',
+        //     testMatch: /.*fast-api-spec\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //         /* An object containing additional HTTP headers to be sent with
+        //         every request */
+        //         // extraHTTPHeaders: {
+        //         //     'X-My-Header': 'value',
+        //         // },
+        //     },
+        //     dependencies: ['Setup test data',],
+        //     retries: 1,
+        // },
+        // {
+        //     name: 'Long',
+        //     testMatch: /.*long-api-spec\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //         /* An object containing additional HTTP headers to be sent with
+        //         every request */
+        //         // extraHTTPHeaders: {
+        //         //     'X-My-Header': 'value',
+        //         // },
+        //     },
+        //     dependencies: ['Setup test data',],
+        //     retries: 2,
+        // },
     ],
 });

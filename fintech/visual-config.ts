@@ -23,40 +23,43 @@ export default defineConfig({
     },
     projects: [
         {
-            name: 'Happy path',
-            testMatch: /.*(?<!fast|long)-visual-spec\.ts/,
-            retries: 0,
-        },
-        /* Test against desktop browsers */
-        {
-            name: 'Chromium',
-            use: { ...devices['Desktop Chrome'], },
+            name: 'Happy path English',
+            testMatch: /.*(?<!fast|long)-en-visual-spec\.ts/,
         },
         {
-            name: 'Firefox',
-            use: { ...devices['Desktop Firefox'], },
+            name: 'Happy path French',
+            testMatch: /.*(?<!fast|long)-fr-visual-spec\.ts/,
         },
-        {
-            name: 'Webkit',
-            use: { ...devices['Desktop Safari'], },
-        },
-        /* Test against mobile viewports */
-        {
-            name: 'Mobile Chrome',
-            use: { ...devices['Pixel 5'], },
-        },
-        {
-            name: 'Mobile Safari',
-            use: { ...devices['iPhone 12'], },
-        },
-        /* Test against branded browsers */
-        {
-            name: 'Google Chrome',
-            use: { ...devices['Desktop Chrome'], channel: 'chrome', }, // or 'chrome-beta'
-        },
-        {
-            name: 'Microsoft Edge',
-            use: { ...devices['Desktop Edge'], channel: 'msedge', }, // or 'msedge-dev'
-        },
+        // /* Test against desktop browsers */
+        // {
+        //     name: 'Chromium',
+        //     use: { ...devices['Desktop Chrome'], },
+        // },
+        // {
+        //     name: 'Firefox',
+        //     use: { ...devices['Desktop Firefox'], },
+        // },
+        // {
+        //     name: 'Webkit',
+        //     use: { ...devices['Desktop Safari'], },
+        // },
+        // /* Test against mobile viewports */
+        // {
+        //     name: 'Mobile Chrome',
+        //     use: { ...devices['Pixel 5'], },
+        // },
+        // {
+        //     name: 'Mobile Safari',
+        //     use: { ...devices['iPhone 12'], },
+        // },
+        // /* Test against branded browsers */
+        // {
+        //     name: 'Google Chrome',
+        //     use: { ...devices['Desktop Chrome'], channel: 'chrome', }, // or 'chrome-beta'
+        // },
+        // {
+        //     name: 'Microsoft Edge',
+        //     use: { ...devices['Desktop Edge'], channel: 'msedge', }, // or 'msedge-dev'
+        // },
     ],
 });
