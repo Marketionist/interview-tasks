@@ -22,41 +22,46 @@ export default defineConfig({
     },
     projects: [
         {
-            name: 'Happy path',
-            testMatch: /.*(?<!fast|long)-e2e-spec\.ts/,
+            name: 'Happy path English',
+            testMatch: /.*(?<!fast|long)-en-e2e-spec\.ts/,
             retries: 0,
         },
         {
-            name: 'Log in',
-            testMatch: /global-setup\.ts/,
+            name: 'Happy path French',
+            testMatch: /.*(?<!fast|long)-fr-e2e-spec\.ts/,
             retries: 0,
         },
-        {
-            name: 'Setup test data',
-            testMatch: /.*(?<!global-)setup\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-            },
-            dependencies: ['Log in',],
-            retries: 0,
-        },
-        {
-            name: 'Fast',
-            testMatch: /.*fast-e2e-spec\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-            },
-            dependencies: ['Setup test data',],
-            retries: 1,
-        },
-        {
-            name: 'Long',
-            testMatch: /.*long-e2e-spec\.ts/,
-            use: {
-                storageState: '.auth/user.json',
-            },
-            dependencies: ['Setup test data',],
-            retries: 2,
-        },
+        // {
+        //     name: 'Log in',
+        //     testMatch: /global-setup\.ts/,
+        //     retries: 0,
+        // },
+        // {
+        //     name: 'Setup test data',
+        //     testMatch: /.*(?<!global-)setup\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //     },
+        //     dependencies: ['Log in',],
+        //     retries: 0,
+        // },
+        // {
+        //     name: 'Fast',
+        //     testMatch: /.*fast-e2e-spec\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //     },
+        //     dependencies: ['Setup test data',],
+        //     retries: 1,
+        // },
+        // {
+        //     name: 'Long',
+        //     testMatch: /.*long-e2e-spec\.ts/,
+        //     use: {
+        //         storageState: '.auth/user.json',
+        //     },
+        //     dependencies: ['Setup test data',],
+        //     retries: 2,
+        // },
     ],
 });
