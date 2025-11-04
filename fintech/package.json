@@ -1,0 +1,45 @@
+{
+  "name": "fintech",
+  "version": "0.0.1",
+  "description": "A set of happy path API, end-to-end and visual regression tests to verify the fintech portal",
+  "engines": {
+    "node": ">=22.3.x"
+  },
+  "scripts": {
+    "install:test-dependencies-old": "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true npm install && npx playwright install firefox",
+    "install:test-dependencies": "npm install && npx playwright install",
+    "lint": "node ./node_modules/.bin/eslint *config.ts pages/**/*.ts tests/**/*.ts --ext .js,.ts,.tsx .",
+    "test:api": "node ./node_modules/.bin/playwright test --config=api-config.ts --project='Happy path'",
+    "test:e2e": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Happy path'",
+    "test:e2e:fast": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Fast'",
+    "test:e2e:long": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Long'",
+    "test:visual": "node ./node_modules/.bin/playwright test --config=visual-config.ts --project='Happy path'",
+    "test:visual:update": "node ./node_modules/.bin/Happy path test --config=visual-config.ts --project='Happy path' --update-snapshots",
+    "prepare": "cd .. && husky ./healthcare/.husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marketionist/interview-tasks.git"
+  },
+  "keywords": [
+    "interview fintech",
+    "interview tasks fintech",
+    "interview e2e tests fintech",
+    "e2e tests for fintech",
+    "interview api tests fintech",
+    "api tests for fintech"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marketionist/interview-tasks/issues"
+  },
+  "homepage": "https://github.com/Marketionist/interview-tasks#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^8.57.1",
+    "husky": "^9.1.7"
+  }
+}
