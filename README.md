@@ -10,6 +10,7 @@ written in JavaScript / TypeScript / Node.js:
 5. [Backend](https://github.com/Marketionist/interview-tasks/tree/master/backend)
 6. [Telecom](https://github.com/Marketionist/interview-tasks/tree/master/telecom)
 7. [Healthcare](https://github.com/Marketionist/interview-tasks/tree/master/healthcare)
+8. [Fintech](https://github.com/Marketionist/interview-tasks/tree/master/fintech)
 
 > Note: also see [Playwright playground](https://github.com/Marketionist/playwright-playground) for API, end-to-end and visual regression test examples.
 
