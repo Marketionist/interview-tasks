@@ -105,12 +105,6 @@ export class SignUpPage extends BasePage {
         await this.page.locator(this.inputConfirmPassword)
             .fill(this.userPassword);
 
-        // const buttonAcceptCookies = this.page.locator(this.buttonAcceptCookies);
-
-        // if (await buttonAcceptCookies.isVisible()) {
-        //     await buttonAcceptCookies.click();
-        // }
-
         await this.page.locator(this.buttonCreateAccount).click();
     }
 
