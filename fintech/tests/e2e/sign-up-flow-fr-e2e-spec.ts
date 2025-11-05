@@ -98,8 +98,8 @@ test.describe('Sign up e2e French', () => {
             const signUpPage = new SignUpPage(page);
 
             await signUpPage.signUp({
-                firstName: '<script>alert(\'This code was executed - XSS risk!!!\');</script>',
-                lastName: '<script>alert(\'This code was executed - XSS risk!!!\');</script>',
+                firstName: '<script>alert(\'This code was executed - First name XSS risk!!!\');</script>',
+                lastName: '<script>alert(\'This code was executed - Last name XSS risk!!!\');</script>',
                 phone: signUpPage.userDataFr.phone,
                 region: signUpPage.userDataFr.region,
                 email: signUpPage.createEmailWithTimestamp(10),
