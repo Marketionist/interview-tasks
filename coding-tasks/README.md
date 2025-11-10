@@ -13,6 +13,7 @@ Set of interview coding tasks written on JavaScript / Node.js:
 and string object properties
 - [crop-strings-of-words.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/crop-strings-of-words.js): crops the amount of words in the sentence to fit the specified length
 - [integers-sum-up-to-zero.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/integers-sum-up-to-zero.js): creates an array of unique integers that sum up to zero
+- [target-sum.js](https://github.com/Marketionist/interview-tasks/blob/master/coding-tasks/target-sum.js): check if array contains two distinct numbers whose sum equals to the target number
 
 ## Thanks
 If this script was helpful for you, please give it a **★ Star**
