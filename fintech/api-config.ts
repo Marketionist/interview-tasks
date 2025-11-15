@@ -4,7 +4,8 @@ export default defineConfig({
     /* Timeout is shared between all tests */
     timeout: 120000,
     retries: 0,
-    workers: 1,
+    workers: 8,
+    fullyParallel: true,
     testDir: 'tests/api',
     testMatch: /.*(?<!fast|long)-api-spec\.ts/,
     /* Use list and json reporters while running on CI and only list locally */
