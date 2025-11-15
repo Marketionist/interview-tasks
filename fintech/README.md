@@ -116,9 +116,8 @@ all inputs should be tested for possible XSS injections (for example with:
 should be supported, an assumption was be made that the booking flow should
 work in Google Chrome as it is the most popular and widely used browser.
 
-5. As the amount of tests is not big, for now the concurrency for test
-execution is set to 1. It can easily be extended later on. For future
-scalability please see `projects` inside
+5. The amount of tests is not big for now, but they are independent and running
+in parallel. For extended future scalability please see `projects` inside
 [e2e-config.ts](https://github.com/Marketionist/interview-tasks/blob/master/fintech/e2e-config.ts).
 
 6. Additionally all code is checked for styling quality by lint and husky on
