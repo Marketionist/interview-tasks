@@ -4,6 +4,8 @@ export default defineConfig({
     /* Timeout is shared between all tests */
     timeout: 60000,
     retries: 0,
+    workers: 8,
+    fullyParallel: true,
     testDir: 'tests/visual',
     testMatch: /.*(?<!fast|long)-visual-spec\.ts/,
     expect: {
