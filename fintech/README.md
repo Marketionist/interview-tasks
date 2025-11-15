@@ -100,12 +100,12 @@ exhaustive list of test cases was created for demonstration purposes.
 [e2e tests](https://github.com/Marketionist/interview-tasks/tree/master/fintech/tests/e2e)
 (account deletion and some other possible e2e tests were not automated for the
 sake of time economy, but can be covered upon request).
-- Some more test cases were be automated with
+- Some more test cases were automated with
 [API tests](https://github.com/Marketionist/interview-tasks/tree/master/fintech/tests/api)
 as they are usually considered to be faster and more reliable than e2e tests.
-- Also checks for UI of the sign up page (fields and labels) were be covered with
+- Also checks for UI of the sign up page (fields and labels) were covered with
 [visual regression tests](https://github.com/Marketionist/interview-tasks/tree/master/fintech/tests/visual) (and some of them inside e2e tests).
-All of these tests have `-en-` and `-fr-` versions to check for both languages.
+All of these tests have `-en-` and `-fr-` versions to verify both languages.
 
 3. It looks like "First name" and "Last name" inputs have a limit of 63
 characters, so it can be reasonable to test 0 and 64 as a boundary values. Also
@@ -416,7 +416,7 @@ each pre-commit.
 1. While typing in user credentials in "Password" and "Confirm password"
 inputs at https://app.qa.nesto.ca/signup the actual characters are not shown -
 it can be helpful to display a Show icon for both of the inputs to let users
-see what they currently typed in.
+see what they have currently typed in.
 2. User can paste any value into the "Confirm password" input - it can be
 helpful to disable pasting (to make sure users manually type in password
 confirmation) with something like:
@@ -424,14 +424,15 @@ confirmation) with something like:
 <input type="password" onpaste="return false;">
 ```
 3. After creating a new user, deleting it and creating an new user with the same
-credentials again, the infinite spinner is displayed in "Create your account"
-button (https://auth.nesto.ca/co/authenticate returns `403` with
+credentials again, the infinite spinner is displayed inside "Create your
+account" button (https://auth.nesto.ca/co/authenticate returns `403` with
 `{ error: "access_denied", error_description: "Wrong email or password." }`, but
 the majority of users will not see it). Changing the input values does not
 unblock "Create your account" button, so the only way to try again is to
 reload the page (and in such case all inputs lose their values). It can be
 helpful to display an error notification for user to understand what's going on
-and to unblock "Create your account" button while preserving all inputs.
+and to unblock "Create your account" button while preserving all values inside
+the inputs.
 
 
 

@@ -93,6 +93,7 @@
         "no-extra-bind": "error",
         "no-fallthrough": "error",
         "no-floating-decimal": "error",
+        "@typescript-eslint/no-floating-promises": "error",
         "no-implicit-coercion": "off",
         "no-implied-eval": "error",
         "no-invalid-this": "off",
@@ -106,6 +107,7 @@
             "ignoreArrayIndexes": true,
             "ignoreReadonlyClassProperties": true
         }],
+        "@typescript-eslint/no-misused-promises": "error",
         "no-multi-spaces": "error",
         "no-multi-str": "off",
         "no-native-reassign": "error",
