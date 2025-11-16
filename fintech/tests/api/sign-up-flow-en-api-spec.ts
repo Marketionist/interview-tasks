@@ -9,7 +9,7 @@ test.describe('Sign up API English', () => {
         const deleteAccountResponse = await signUpApiPage.deleteAccountApi(
             bearerToken);
 
-        await signUpApiPage.verifyAccountDeletedApi(deleteAccountResponse);
+        signUpApiPage.verifyAccountDeletedApi(deleteAccountResponse);
     });
 
     test(

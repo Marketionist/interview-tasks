@@ -41,6 +41,7 @@
   "homepage": "https://github.com/Marketionist/interview-tasks#readme",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^8.57.1",

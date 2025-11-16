@@ -14,7 +14,7 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.verifySignUpFieldsLabels();
+            await signUpPage.verifySignUpFieldsLabelsEn();
         }
     );
 
@@ -23,14 +23,14 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.signUp({
+            await signUpPage.signUpEn({
                 firstName: signUpPage.userDataEn.firstName,
                 lastName: signUpPage.userDataEn.lastName,
                 phone: signUpPage.userDataEn.phone,
-                region: signUpPage.userDataEn.region,
+                region: signUpPage.textRegionEn,
                 email: signUpPage.userDataEn.email,
             });
-            await signUpPage.verifyLoggedIn(signUpPage.buttonMyPortfolioEn);
+            await signUpPage.verifyLoggedInEn();
         }
     );
 
@@ -39,14 +39,14 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.signUp({
+            await signUpPage.signUpEn({
                 firstName: 'Alpha-Bravo Jr. II',
                 lastName: 'Charlie-Delta Echo',
-                phone: '613 123 4567',
-                region: 'BC',
+                phone: '778 123 4567',
+                region: 'British-Columbia',
                 email: signUpPage.createEmailWithTimestamp(2),
             });
-            await signUpPage.verifyLoggedIn(signUpPage.buttonMyPortfolioEn);
+            await signUpPage.verifyLoggedInEn();
         }
     );
 
@@ -56,11 +56,11 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.signUp({
+            await signUpPage.signUpEn({
                 firstName: '',
                 lastName: '',
                 phone: signUpPage.userDataEn.phone,
-                region: signUpPage.userDataEn.region,
+                region: signUpPage.textRegionEn,
                 email: signUpPage.createEmailWithTimestamp(4),
             });
             await signUpPage.verifyInputErrors(
@@ -76,11 +76,11 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.signUp({
+            await signUpPage.signUpEn({
                 firstName: signUpPage.textFirstName64Chars,
                 lastName: signUpPage.textLastName64Chars,
                 phone: signUpPage.userDataEn.phone,
-                region: signUpPage.userDataEn.region,
+                region: signUpPage.textRegionEn,
                 email: signUpPage.createEmailWithTimestamp(5),
             });
             await signUpPage.verifyInputErrors(
@@ -96,11 +96,11 @@ test.describe('Sign up e2e English', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            await signUpPage.signUp({
+            await signUpPage.signUpEn({
                 firstName: '<script>alert(\'This code was executed - First name XSS risk!!!\');</script>',
                 lastName: '<script>alert(\'This code was executed - Last name XSS risk!!!\');</script>',
                 phone: signUpPage.userDataEn.phone,
-                region: signUpPage.userDataEn.region,
+                region: signUpPage.textRegionEn,
                 email: signUpPage.createEmailWithTimestamp(6),
             });
             await signUpPage.verifyInputErrors(

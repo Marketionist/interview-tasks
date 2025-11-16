@@ -7,9 +7,12 @@ test.describe('Sign up visual regression French', () => {
         const signUpPage = new SignUpPage(page);
 
         await page.goto(`${signUpPage.baseUrl}/signup`);
-        await page.locator(signUpPage.buttonLanguageSwitchFr).click();
-        await expect(page.locator(signUpPage.buttonLanguageSwitchEn))
-            .toBeVisible({ timeout: 20000, });
+        await page.getByRole(
+            'link', { name: signUpPage.textLanguageFr, exact: true, }
+        ).click();
+        await expect(page.getByRole(
+            'link', { name: signUpPage.textLanguageEn, exact: true, }
+        )).toBeVisible({ timeout: 20000, });
     });
 
     test('Full page snapshot.', async ({ page, }) => {
@@ -24,7 +27,7 @@ test.describe('Sign up visual regression French', () => {
         async ({ page, }) => {
             const signUpPage = new SignUpPage(page);
 
-            expect(await page.textContent(signUpPage.titleCreateAccount))
+            expect(await page.getByRole('heading').textContent())
                 .toMatchSnapshot('sign-up-page-fr-title.txt');
             expect(await page.textContent(signUpPage.blockPasswordInstructions))
                 .toMatchSnapshot(

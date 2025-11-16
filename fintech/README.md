@@ -143,7 +143,7 @@ each pre-commit.
                 <br>2. Fill in "First name" input (for example: Alpha).
                 <br>3. Fill in "Last name" input (for example: Bravo).
                 <br>4. Fill in "Phone number" input (for example: +16131234567)
-                and select province (for example: ON).
+                and select province (for example: Ontario).
                 <br>5. Fill in "Email" input (for example:
                 iaaxosna@sharklasers.com).
                 <br>6. Fill in "Password" input (for example: testTest1111).
@@ -168,8 +168,8 @@ each pre-commit.
                 Alpha-Bravo Jr. II).
                 <br>3. Fill in "Last name" input (for example:
                 Charlie-Delta Echo).
-                <br>4. Fill in "Phone number" input (for example: 613 123 4567)
-                and select province (for example: BC).
+                <br>4. Fill in "Phone number" input (for example: 778 123 4567)
+                and select province (for example: British-Columbia).
                 <br>5. Fill in "Email" input.
                 <br>6. Fill in "Password" input.
                 <br>7. Fill in "Confirm password" input.
@@ -253,7 +253,7 @@ each pre-commit.
                 <br>2. Fill in "First name" input (for example: Adélaïde).
                 <br>3. Fill in "Last name" input (for example: Barrière).
                 <br>4. Fill in "Phone number" input (for example: +14181234567)
-                and select province (for example: QC).
+                and select province (for example: Québec).
                 <br>5. Fill in "Email" input (for example:
                 iaaxosna@sharklasers.com).
                 <br>6. Fill in "Password" input (for example: testTest1111).
@@ -278,8 +278,8 @@ each pre-commit.
                 <br>2. Fill in "First name" input (for example: Jean-François).
                 <br>3. Fill in "Last name" input (for example:
                 d'Aboville-Bélanger).
-                <br>4. Fill in "Phone number" input (for example: 418 123 4567)
-                and select province (for example: NB).
+                <br>4. Fill in "Phone number" input (for example: 506 123 4567)
+                and select province (for example: Nouveau-Brunswick).
                 <br>5. Fill in "Email" input (for example:
                 iaaxosna@sharklasers.com).
                 <br>6. Fill in "Password" input (for example: testTest1111).
