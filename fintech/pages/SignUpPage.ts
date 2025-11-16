@@ -77,96 +77,96 @@ export class SignUpPage extends BasePage {
 
     async verifySignUpFieldsLabelsEn (): Promise<void> {
         await expect(this.page.getByRole(
-            'link', { name: this.textLanguageFr, exact: true }
+            'link', { name: this.textLanguageFr, exact: true, }
         )).toBeVisible();
         await expect(this.page.getByRole('heading')).toBeVisible();
         await expect(this.page.getByLabel(this.textFirstNameEn)).toBeVisible();
         await expect(this.page.getByLabel(this.textLastNameEn)).toBeVisible();
         await expect(this.page.getByLabel(this.textPhoneNumberEn,
-            { exact: true })).toBeVisible();
+            { exact: true, })).toBeVisible();
         await expect(this.page.getByRole('combobox',
-            { name: this.textProvinceEn })).toBeVisible();
+            { name: this.textProvinceEn, })).toBeVisible();
         await expect(this.page.getByLabel(this.textEmailEn)).toBeVisible();
         await expect(this.page.getByLabel(this.textPasswordEn,
-            { exact: true })).toBeVisible();
+            { exact: true, })).toBeVisible();
         await expect(this.page.locator(this.blockPasswordInstructions))
             .toBeVisible();
         await expect(this.page.getByLabel(this.textConfirmPasswordEn))
             .toBeVisible();
         await expect(this.page.getByRole('checkbox')).toBeVisible();
         await expect(this.page.locator(this.labelAgreement)).toBeVisible();
-        await expect(await this.page.getByRole('button',
-            { name: this.textCreateAccountEn })).toBeVisible();
+        await expect(this.page.getByRole('button',
+            { name: this.textCreateAccountEn, })).toBeVisible();
     }
 
     async verifySignUpFieldsLabelsFr (): Promise<void> {
         await expect(this.page.getByRole(
-            'link', { name: this.textLanguageEn, exact: true }
+            'link', { name: this.textLanguageEn, exact: true, }
         )).toBeVisible();
         await expect(this.page.getByRole('heading')).toBeVisible();
         await expect(this.page.getByLabel(this.textFirstNameFr)).toBeVisible();
         await expect(this.page.getByLabel(this.textLastNameFr,
-            { exact: true })).toBeVisible();
+            { exact: true, })).toBeVisible();
         await expect(this.page.getByLabel(this.textPhoneNumberFr,
-            { exact: true })).toBeVisible();
+            { exact: true, })).toBeVisible();
         await expect(this.page.getByRole('combobox',
-            { name: this.textProvinceFr })).toBeVisible();
+            { name: this.textProvinceFr, })).toBeVisible();
         await expect(this.page.getByLabel(this.textEmailFr)).toBeVisible();
         await expect(this.page.getByLabel(this.textPasswordFr,
-            { exact: true })).toBeVisible();
+            { exact: true, })).toBeVisible();
         await expect(this.page.locator(this.blockPasswordInstructions))
             .toBeVisible();
         await expect(this.page.getByLabel(this.textConfirmPasswordFr))
             .toBeVisible();
         await expect(this.page.getByRole('checkbox')).toBeVisible();
         await expect(this.page.locator(this.labelAgreement)).toBeVisible();
-        await expect(await this.page.getByRole('button',
-            { name: this.textCreateAccountFr })).toBeVisible();
+        await expect(this.page.getByRole('button',
+            { name: this.textCreateAccountFr, })).toBeVisible();
     }
 
     async signUpEn (config: SignUpConfig): Promise<void> {
         await this.page.getByLabel(this.textFirstNameEn).fill(config.firstName);
         await this.page.getByLabel(this.textLastNameEn).fill(config.lastName);
         await this.page.getByLabel(this.textPhoneNumberEn,
-            { exact: true }).fill(config.phone);
-        await this.page.getByRole('combobox', { name: this.textProvinceEn })
-            .selectOption({ label: config.region });
+            { exact: true, }).fill(config.phone);
+        await this.page.getByRole('combobox', { name: this.textProvinceEn, })
+            .selectOption({ label: config.region, });
         await this.page.getByLabel(this.textEmailEn).fill(config.email);
-        await this.page.getByLabel(this.textPasswordEn, { exact: true })
+        await this.page.getByLabel(this.textPasswordEn, { exact: true, })
             .fill(this.userPassword);
         await this.page.getByLabel(this.textConfirmPasswordEn)
             .fill(this.userPassword);
 
         await this.page.getByRole('button',
-            { name: this.textCreateAccountEn }).click();
+            { name: this.textCreateAccountEn, }).click();
     }
 
     async signUpFr (config: SignUpConfig): Promise<void> {
         await this.page.getByLabel(this.textFirstNameFr).fill(config.firstName);
-        await this.page.getByLabel(this.textLastNameFr, { exact: true })
+        await this.page.getByLabel(this.textLastNameFr, { exact: true, })
             .fill(config.lastName);
-        await this.page.getByLabel(this.textPhoneNumberFr, { exact: true })
+        await this.page.getByLabel(this.textPhoneNumberFr, { exact: true, })
             .fill(config.phone);
-        await this.page.getByRole('combobox', { name: this.textProvinceFr })
-            .selectOption({ label: config.region });
+        await this.page.getByRole('combobox', { name: this.textProvinceFr, })
+            .selectOption({ label: config.region, });
         await this.page.getByLabel(this.textEmailFr).fill(config.email);
-        await this.page.getByLabel(this.textPasswordFr, { exact: true })
+        await this.page.getByLabel(this.textPasswordFr, { exact: true, })
             .fill(this.userPassword);
         await this.page.getByLabel(this.textConfirmPasswordFr)
             .fill(this.userPassword);
 
         await this.page.getByRole('button',
-            { name: this.textCreateAccountFr }).click();
+            { name: this.textCreateAccountFr, }).click();
     }
 
     async verifyLoggedInEn (): Promise<void> {
         await expect(this.page.getByRole('link',
-            { name: this.textMyPortfolioEn })).toBeVisible({ timeout: 20000, });
+            { name: this.textMyPortfolioEn, })).toBeVisible({ timeout: 20000, });
     }
 
     async verifyLoggedInFr (): Promise<void> {
         await expect(this.page.getByRole('link',
-            { name: this.textMyPortfolioFr })).toBeVisible({ timeout: 20000, });
+            { name: this.textMyPortfolioFr, })).toBeVisible({ timeout: 20000, });
     }
 
     async verifyInputErrors (

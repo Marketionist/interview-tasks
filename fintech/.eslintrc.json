@@ -1,11 +1,17 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["**/tsconfig.json"]
+    },
     "plugins": ["@typescript-eslint"],
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked"
     ],
     "env": {
         "browser": true,
@@ -13,16 +19,16 @@
         "node": true
     },
     "globals": {
-        "module": true,
-        "process": true,
-        "expect": true,
-        "beforeEach": true,
-        "afterEach": true,
-        "beforeAll": true,
-        "afterAll": true,
-        "fixture": true,
-        "pending": true,
-        "EC": true
+        "module": "writable",
+        "process": "writable",
+        "expect": "writable",
+        "beforeEach": "writable",
+        "afterEach": "writable",
+        "beforeAll": "writable",
+        "afterAll": "writable",
+        "fixture": "writable",
+        "pending": "writable",
+        "EC": "writable"
     },
     "rules": {
         // Possible Errors

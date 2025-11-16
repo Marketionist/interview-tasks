@@ -6,7 +6,8 @@ import { AccountCreationResponseInterface } from './AccountCreationResponseInter
 interface SignUpResponseBodyObject {
     token: {
         accessToken: string;
-    }
+    },
+    account: AccountCreationResponseInterface;
 }
 
 
@@ -45,7 +46,7 @@ export class SignUpApiPage extends BasePage {
         signUpResponse: APIResponse,
         config: AccountCreationResponseInterface
     ): Promise<SignUpResponseBodyObject> {
-        const signUpResponseBody = await signUpResponse.json();
+        const signUpResponseBody = await signUpResponse.json() as SignUpResponseBodyObject;
 
         expect(signUpResponse.status()).toBe(201);
         expect(signUpResponseBody.token.accessToken.length)

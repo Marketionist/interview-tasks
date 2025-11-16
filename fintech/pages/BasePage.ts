@@ -10,7 +10,7 @@ export class BasePage {
     public userDataEn: UserDataInterface;
     public userDataFr: UserDataInterface;
 
-    public createEmailWithTimestamp (number: number = 0): string {
+    public createEmailWithTimestamp (number = 0): string {
         return this.userEmail.replace('@', `${this.timestamp + number}@`);
     }
 

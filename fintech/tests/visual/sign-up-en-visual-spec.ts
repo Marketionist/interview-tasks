@@ -8,7 +8,7 @@ test.describe('Sign up visual regression English', () => {
 
         await page.goto(`${signUpPage.baseUrl}/signup`);
         await expect(page.getByRole(
-            'link', { name: signUpPage.textLanguageFr, exact: true }
+            'link', { name: signUpPage.textLanguageFr, exact: true, }
         )).toBeVisible({ timeout: 20000, });
     });
 

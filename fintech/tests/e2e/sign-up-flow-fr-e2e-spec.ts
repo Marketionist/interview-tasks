@@ -7,7 +7,7 @@ test.describe('Sign up e2e French', () => {
         const signUpPage = new SignUpPage(page);
 
         await page.goto(`${signUpPage.baseUrl}/signup`);
-        await page.getByRole('link', { name: signUpPage.textLanguageFr }).click();
+        await page.getByRole('link', { name: signUpPage.textLanguageFr, }).click();
     });
 
     test(
