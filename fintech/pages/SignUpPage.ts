@@ -10,20 +10,15 @@ interface SignUpConfig {
 }
 
 export class SignUpPage extends BasePage {
-    public titleCreateAccount = 'h2[data-testid="typography"]';
     public blockPasswordInstructions = '//*[preceding-sibling::*[' +
         'descendant::*[contains(@data-testid, "password-input")]] and ' +
         'contains(@data-testid, "typography")]';
     public labelAgreement = '[data-testid="typography"]' +
         '[for="leadDistributeConsentAgreement"]';
-    public buttonLanguageSwitchEn = this.createButtonLanguageSwitchSelector(
-        'EN');
-    public buttonLanguageSwitchFr = this.createButtonLanguageSwitchSelector(
-        'FR');
-    public buttonMyPortfolioEn = this.createButtonMyPortfolioSelector(
-        'My Portfolio');
-    public buttonMyPortfolioFr = this.createButtonMyPortfolioSelector(
-        'Mon portfolio');
+    public textLanguageEn = 'EN';
+    public textLanguageFr = 'FR';
+    public textRegionEn = 'Ontario';
+    public textRegionFr = 'Québec';
     public textFieldRequiredEn = 'The field is required';
     public textFieldRequiredFr = 'Ce champ est obligatoire.';
     public textTooLongEn = 'Too many characters';
@@ -45,73 +40,133 @@ export class SignUpPage extends BasePage {
     public blockLastNameTooLongErrorFr = this.createBlockInputErrorSelector(
         'last-name', this.textTooLongFr);
 
-    private createButtonLanguageSwitchSelector (text: string): string {
-        return '//*[contains(@data-testid, "header-language-switch") and ' +
-            `contains(text(), "${text}")]`;
-    }
-    private createButtonMyPortfolioSelector (text: string): string {
-        return '//*[contains(@data-testid, "my-portfolio-button") and ' +
-        `contains(text(), "${text}")]`;
-    }
     private createBlockInputErrorSelector (
         inputName: string, errorText: string
     ): string {
         return '//*[contains(@data-testid, ' +
-        `"${inputName}-error-message-typography") and ` +
-        `contains(., "${errorText}")]`;
+            `"${inputName}-error-message-typography") and ` +
+            `contains(., "${errorText}")]`;
     }
 
     protected page: Page;
-    private inputFirstName = '[data-testid="first-name-input"]';
-    private inputLastName = '[data-testid="last-name-input"]';
-    private inputPhoneNumber = '[data-testid="phoneInput"]';
-    private selectProvince = '[data-testid="region-select"]';
-    private inputEmail = '[data-testid="email-input"]';
-    private inputPassword = '[data-testid="password-input"]';
-    private inputConfirmPassword = '[data-testid="passwordConfirmation-input"]';
-    private checkboxAgreement = '[data-testid="agreement-checkbox"]';
-    private buttonCreateAccount = '[data-testid="submit-button"]';
+
+    private textFirstNameEn = 'First name';
+    private textLastNameEn = 'Last name';
+    private textPhoneNumberEn = 'Phone number';
+    private textProvinceEn = 'Province of purchase';
+    private textEmailEn = 'Email';
+    private textPasswordEn = 'Password';
+    private textConfirmPasswordEn = 'Confirm password';
+    private textCreateAccountEn = 'Create your account';
+    private textMyPortfolioEn = 'My Portfolio';
+
+    private textFirstNameFr = 'Prénom';
+    private textLastNameFr = 'Nom';
+    private textPhoneNumberFr = 'Téléphone';
+    private textProvinceFr = 'Province de l\'achat';
+    private textEmailFr = 'Courriel';
+    private textPasswordFr = 'Mot de passe';
+    private textConfirmPasswordFr = 'Confirmation du mot de passe';
+    private textCreateAccountFr = 'Créez votre compte';
+    private textMyPortfolioFr = 'Mon portfolio';
 
     constructor (page: Page) {
         super();
         this.page = page;
     }
 
-    async verifySignUpFieldsLabels (): Promise<void> {
-        await expect(this.page.locator(this.titleCreateAccount)).toBeVisible();
-        await expect(this.page.locator(this.inputFirstName)).toBeVisible();
-        await expect(this.page.locator(this.inputLastName)).toBeVisible();
-        await expect(this.page.locator(this.inputPhoneNumber)).toBeVisible();
-        await expect(this.page.locator(this.selectProvince)).toBeVisible();
-        await expect(this.page.locator(this.inputEmail)).toBeVisible();
-        await expect(this.page.locator(this.inputPassword)).toBeVisible();
+    async verifySignUpFieldsLabelsEn (): Promise<void> {
+        await expect(this.page.getByRole(
+            'link', { name: this.textLanguageFr, exact: true }
+        )).toBeVisible();
+        await expect(this.page.getByRole('heading')).toBeVisible();
+        await expect(this.page.getByLabel(this.textFirstNameEn)).toBeVisible();
+        await expect(this.page.getByLabel(this.textLastNameEn)).toBeVisible();
+        await expect(this.page.getByLabel(this.textPhoneNumberEn,
+            { exact: true })).toBeVisible();
+        await expect(this.page.getByRole('combobox',
+            { name: this.textProvinceEn })).toBeVisible();
+        await expect(this.page.getByLabel(this.textEmailEn)).toBeVisible();
+        await expect(this.page.getByLabel(this.textPasswordEn,
+            { exact: true })).toBeVisible();
         await expect(this.page.locator(this.blockPasswordInstructions))
             .toBeVisible();
-        await expect(this.page.locator(this.inputConfirmPassword))
+        await expect(this.page.getByLabel(this.textConfirmPasswordEn))
             .toBeVisible();
-        await expect(this.page.locator(this.checkboxAgreement)).toBeVisible();
+        await expect(this.page.getByRole('checkbox')).toBeVisible();
         await expect(this.page.locator(this.labelAgreement)).toBeVisible();
-        await expect(this.page.locator(this.buttonCreateAccount)).toBeVisible();
+        await expect(await this.page.getByRole('button',
+            { name: this.textCreateAccountEn })).toBeVisible();
     }
 
-    async signUp (config: SignUpConfig): Promise<void> {
-        await this.page.locator(this.inputFirstName).fill(config.firstName);
-        await this.page.locator(this.inputLastName).fill(config.lastName);
-        await this.page.locator(this.inputPhoneNumber).fill(config.phone);
-        await this.page.locator(this.selectProvince)
-            .selectOption(config.region);
-        await this.page.locator(this.inputEmail).fill(config.email);
-        await this.page.locator(this.inputPassword).fill(this.userPassword);
-        await this.page.locator(this.inputConfirmPassword)
+    async verifySignUpFieldsLabelsFr (): Promise<void> {
+        await expect(this.page.getByRole(
+            'link', { name: this.textLanguageEn, exact: true }
+        )).toBeVisible();
+        await expect(this.page.getByRole('heading')).toBeVisible();
+        await expect(this.page.getByLabel(this.textFirstNameFr)).toBeVisible();
+        await expect(this.page.getByLabel(this.textLastNameFr,
+            { exact: true })).toBeVisible();
+        await expect(this.page.getByLabel(this.textPhoneNumberFr,
+            { exact: true })).toBeVisible();
+        await expect(this.page.getByRole('combobox',
+            { name: this.textProvinceFr })).toBeVisible();
+        await expect(this.page.getByLabel(this.textEmailFr)).toBeVisible();
+        await expect(this.page.getByLabel(this.textPasswordFr,
+            { exact: true })).toBeVisible();
+        await expect(this.page.locator(this.blockPasswordInstructions))
+            .toBeVisible();
+        await expect(this.page.getByLabel(this.textConfirmPasswordFr))
+            .toBeVisible();
+        await expect(this.page.getByRole('checkbox')).toBeVisible();
+        await expect(this.page.locator(this.labelAgreement)).toBeVisible();
+        await expect(await this.page.getByRole('button',
+            { name: this.textCreateAccountFr })).toBeVisible();
+    }
+
+    async signUpEn (config: SignUpConfig): Promise<void> {
+        await this.page.getByLabel(this.textFirstNameEn).fill(config.firstName);
+        await this.page.getByLabel(this.textLastNameEn).fill(config.lastName);
+        await this.page.getByLabel(this.textPhoneNumberEn,
+            { exact: true }).fill(config.phone);
+        await this.page.getByRole('combobox', { name: this.textProvinceEn })
+            .selectOption({ label: config.region });
+        await this.page.getByLabel(this.textEmailEn).fill(config.email);
+        await this.page.getByLabel(this.textPasswordEn, { exact: true })
+            .fill(this.userPassword);
+        await this.page.getByLabel(this.textConfirmPasswordEn)
             .fill(this.userPassword);
 
-        await this.page.locator(this.buttonCreateAccount).click();
+        await this.page.getByRole('button',
+            { name: this.textCreateAccountEn }).click();
     }
 
-    async verifyLoggedIn (buttonSelector: string): Promise<void> {
-        await expect(this.page.locator(buttonSelector)).toBeVisible({
-            timeout: 20000,
-        });
+    async signUpFr (config: SignUpConfig): Promise<void> {
+        await this.page.getByLabel(this.textFirstNameFr).fill(config.firstName);
+        await this.page.getByLabel(this.textLastNameFr, { exact: true })
+            .fill(config.lastName);
+        await this.page.getByLabel(this.textPhoneNumberFr, { exact: true })
+            .fill(config.phone);
+        await this.page.getByRole('combobox', { name: this.textProvinceFr })
+            .selectOption({ label: config.region });
+        await this.page.getByLabel(this.textEmailFr).fill(config.email);
+        await this.page.getByLabel(this.textPasswordFr, { exact: true })
+            .fill(this.userPassword);
+        await this.page.getByLabel(this.textConfirmPasswordFr)
+            .fill(this.userPassword);
+
+        await this.page.getByRole('button',
+            { name: this.textCreateAccountFr }).click();
+    }
+
+    async verifyLoggedInEn (): Promise<void> {
+        await expect(this.page.getByRole('link',
+            { name: this.textMyPortfolioEn })).toBeVisible({ timeout: 20000, });
+    }
+
+    async verifyLoggedInFr (): Promise<void> {
+        await expect(this.page.getByRole('link',
+            { name: this.textMyPortfolioFr })).toBeVisible({ timeout: 20000, });
     }
 
     async verifyInputErrors (
