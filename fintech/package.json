@@ -13,13 +13,11 @@
     "test:api:fr": "node ./node_modules/.bin/playwright test --config=api-config.ts --project='Happy path French'",
     "test:e2e:en": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Happy path English'",
     "test:e2e:fr": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Happy path French'",
-    "test:e2e:fast": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Fast'",
-    "test:e2e:long": "node ./node_modules/.bin/playwright test --config=e2e-config.ts --project='Long'",
     "test:visual:en": "node ./node_modules/.bin/playwright test --config=visual-config.ts --project='Happy path English'",
     "test:visual:fr": "node ./node_modules/.bin/playwright test --config=visual-config.ts --project='Happy path French'",
-    "test:visual:update:en": "node ./node_modules/.bin/Happy path test --config=visual-config.ts --project='Happy path English' --update-snapshots",
-    "test:visual:update:fr": "node ./node_modules/.bin/Happy path test --config=visual-config.ts --project='Happy path French' --update-snapshots",
-    "prepare": "cd .. && husky ./healthcare/.husky"
+    "test:visual:update:en": "node ./node_modules/.bin/playwright test --config=visual-config.ts --project='Happy path English' --update-snapshots",
+    "test:visual:update:fr": "node ./node_modules/.bin/playwright test --config=visual-config.ts --project='Happy path French' --update-snapshots",
+    "prepare": "cd .. && husky ./fintech/.husky"
   },
   "repository": {
     "type": "git",
