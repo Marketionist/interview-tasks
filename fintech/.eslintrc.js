@@ -1,10 +1,11 @@
-{
+module.exports = {
     "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": ["**/tsconfig.json"]
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": __dirname
     },
     "plugins": ["@typescript-eslint"],
     "extends": [
@@ -30,6 +31,12 @@
         "pending": "writable",
         "EC": "writable"
     },
+    "ignorePatterns": [
+        "build",
+        "dist",
+        "node_modules",
+        ".eslintrc.js"
+    ],
     "rules": {
         // Possible Errors
         "comma-dangle": ["error", {
@@ -236,4 +243,4 @@
         "no-bitwise": "error",
         "no-plusplus": "off"
     }
-}
+};
