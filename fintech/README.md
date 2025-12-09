@@ -17,7 +17,7 @@ A set of happy path end-to-end and API tests to verify the fintech portal.
 
 ## Installation
 
-1. Install [Node.js](http://nodejs.org/) 22.3.x (LTS)
+1. Install [Node.js](http://nodejs.org/) 22.3.x (or current LTS version)
 2. Clone this repository: `git clone git@github.com:Marketionist/interview-tasks.git`
 3. Go to the healthcare folder: `cd interview-tasks/fintech/`
 4. Install dependencies and download browsers:
@@ -31,6 +31,10 @@ npm run install:test-dependencies-old
 ```
 
 ## Running tests
+
+Any temporary user credentials can be used - for example `USER_LOGIN` (user
+email) can be gpcamwyk@sharklasers.com and `USER_PASS` (user password) can be
+testTest1111.
 
 - To launch API tests run:
     ```bash
