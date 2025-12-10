@@ -70,6 +70,9 @@ export class SignUpPage extends BasePage {
     private textCreateAccountFr = 'Créez votre compte';
     private textMyPortfolioFr = 'Mon portfolio';
 
+    private timeoutLoggedIn = 20000;
+    private timeoutInputErrors = 5000;
+
     constructor (page: Page) {
         super();
         this.page = page;
@@ -160,23 +163,25 @@ export class SignUpPage extends BasePage {
     }
 
     async verifyLoggedInEn (): Promise<void> {
-        await expect(this.page.getByRole('link',
-            { name: this.textMyPortfolioEn, })).toBeVisible({ timeout: 20000, });
+        await expect(this.page.getByRole(
+            'link', { name: this.textMyPortfolioEn, }
+        )).toBeVisible({ timeout: this.timeoutLoggedIn, });
     }
 
     async verifyLoggedInFr (): Promise<void> {
-        await expect(this.page.getByRole('link',
-            { name: this.textMyPortfolioFr, })).toBeVisible({ timeout: 20000, });
+        await expect(this.page.getByRole(
+            'link', { name: this.textMyPortfolioFr, }
+        )).toBeVisible({ timeout: this.timeoutLoggedIn, });
     }
 
     async verifyInputErrors (
         blockError1Selector: string, blockError2Selector: string
     ): Promise<void> {
         await expect(this.page.locator(blockError1Selector)).toBeVisible({
-            timeout: 5000,
+            timeout: this.timeoutInputErrors,
         });
         await expect(this.page.locator(blockError2Selector)).toBeVisible({
-            timeout: 5000,
+            timeout: this.timeoutInputErrors,
         });
     }
 }
