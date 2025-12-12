@@ -16,8 +16,8 @@ export class BasePage {
 
     constructor () {
         this.baseUrl = 'https://app.qa.nesto.ca';
-        this.userEmail = process.env.USER_LOGIN ?? '';
-        this.userPassword = process.env.USER_PASS ?? '';
+        this.userEmail = process.env.USER_LOGIN ?? 'gpcamwyk@sharklasers.com';
+        this.userPassword = process.env.USER_PASS ?? 'testTest1111';
         this.textFirstName64Chars = 'A'.repeat(64);
         this.textLastName64Chars = 'B'.repeat(64);
         this.timestamp = new Date().getTime();
