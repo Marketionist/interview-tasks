@@ -33,8 +33,8 @@ npm run install:test-dependencies-old
 ## Running tests
 
 Any temporary user credentials can be used - for example `USER_LOGIN` (user
-email) can be gpcamwyk@sharklasers.com and `USER_PASS` (user password) can be
-testTest1111.
+email) can be 'gpcamwyk@sharklasers.com' and `USER_PASS` (user password) can be
+'testTest1111'.
 
 - To launch API tests run:
     ```bash
