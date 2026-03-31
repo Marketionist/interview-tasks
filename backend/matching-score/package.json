@@ -28,7 +28,7 @@
   "homepage": "https://github.com/Marketionist/interview-tasks#readme",
   "devDependencies": {
     "csvtojson": "^2.0.10",
-    "eslint": "^7.3.1",
+    "eslint": "^7.32.0",
     "jasmine": "^3.5.0",
     "js-automation-tools": "^1.0.5"
   }
